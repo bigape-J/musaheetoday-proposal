@@ -1285,16 +1285,17 @@
       background: var(--color-input-surface);
       color: var(--color-on-primary);
       border-radius: var(--radius-xl);
-      padding: 5.0rem;
+      padding: 4.6rem;
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 3.8rem;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 3.2rem;
       align-items: center;
+      overflow: hidden;
     }
 
     .dark-collab-panel .panel-h3 {
       color: var(--color-on-primary);
-      font-size: clamp(3.0rem, 3.4vw, 4.0rem);
+      font-size: clamp(2.8rem, 3.2vw, 3.8rem);
       line-height: 1.22;
     }
 
@@ -1305,22 +1306,31 @@
     .rate-list {
       background: rgba(255, 255, 255, 0.07);
       border-radius: var(--radius-lg);
-      padding: 2.8rem;
+      padding: 2.5rem 2.6rem;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1.45rem;
+      min-width: 0;
+      overflow: hidden;
     }
 
     .rate-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.2rem;
+      gap: 1.4rem;
       padding-bottom: 1.35rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      font-size: 1.55rem;
+      font-size: 1.48rem;
       font-weight: 600;
-      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .rate-row > span:first-child {
+      min-width: 0;
+      flex: 1 1 auto;
+      line-height: 1.38;
+      word-break: keep-all;
     }
 
     .rate-row:last-child {
@@ -1330,17 +1340,19 @@
 
     .rate-price {
       font-family: var(--font-display);
-      font-size: 1.9rem;
+      font-size: 1.78rem;
       font-weight: 800;
       color: var(--color-accent-yellow);
       white-space: nowrap;
+      flex-shrink: 0;
+      text-align: right;
     }
 
     .rate-vat {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: #b0afb8;
-      margin-left: 0.4rem;
+      margin-left: 0.35rem;
     }
 
     /* ==========================================================================
@@ -1508,10 +1520,10 @@
     }
 
     /* ==========================================================================
-       12. PDF / CLICKABLE INSTAGRAM VIDEO BUTTONS
+       12. CLICKABLE INSTAGRAM VIDEO BUTTONS & POSTER FIX
        ========================================================================== */
     .pdf-poster-img {
-      display: none;
+      display: none !important;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1566,7 +1578,64 @@
     }
 
     /* ==========================================================================
-       13. RESPONSIVE BREAKPOINTS
+       12-B. SCROLL-RESPONSIVE ANIMATIONS & PROGRESS BAR
+       ========================================================================== */
+    .scroll-progress-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(25, 23, 28, 0.06);
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--color-accent-purple) 0%, var(--color-accent-lilac) 55%, var(--color-accent-yellow) 100%);
+      transition: width 0.08s linear;
+    }
+
+    .site-header {
+      transition: padding 0.3s var(--ease-out-quad), top 0.3s var(--ease-out-quad);
+    }
+
+    .site-header.is-scrolled {
+      top: 1.0rem;
+    }
+
+    .site-header.is-scrolled .nav-shell {
+      background-color: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-link.active {
+      background-color: var(--color-accent-lilac-soft);
+      color: var(--color-ink);
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(36px) scale(0.985);
+      transition:
+        opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .scroll-reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .scroll-reveal-delay-1 { transition-delay: 0.07s; }
+    .scroll-reveal-delay-2 { transition-delay: 0.14s; }
+    .scroll-reveal-delay-3 { transition-delay: 0.21s; }
+
+    /* ==========================================================================
+       13. DEDICATED MOBILE & TABLET RESPONSIVE LAYOUT
        ========================================================================== */
     @media (max-width: 1320px) {
       .hero-char-showcase {
@@ -1593,7 +1662,6 @@
     }
 
     @media (max-width: 1120px) {
-      .nav-links { display: none; }
       .studio-workspace { grid-template-columns: 1fr; }
       .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
       .bento-grid-2,
@@ -1602,19 +1670,337 @@
       .process-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
+    /* Dedicated Mobile Proposal Experience (<= 768px) */
     @media (max-width: 768px) {
-      .desktop-line { white-space: normal; }
-      .hero-section { padding: 11rem 0 4.5rem; }
-      .hero-stage-panel,
-      .section-panel,
-      .dark-collab-panel { padding: 2.6rem 1.8rem; }
-      .portfolio-grid,
+      html, body {
+        overflow-x: hidden;
+        max-width: 100vw;
+      }
+
+      .container {
+        padding: 0 1.4rem;
+      }
+
+      .desktop-line {
+        display: inline !important;
+        white-space: normal !important;
+      }
+
+      /* 2-Row Mobile Sticky Navigation Bar */
+      .site-header {
+        top: 0.8rem;
+      }
+      .site-header.is-scrolled {
+        top: 0.5rem;
+      }
+      .nav-shell {
+        flex-wrap: wrap;
+        border-radius: 2.2rem;
+        padding: 0.8rem 1.1rem;
+        gap: 0.6rem;
+      }
+      .brand-logo {
+        font-size: 1.55rem;
+        gap: 0.6rem;
+      }
+      .brand-avatar {
+        width: 2.6rem;
+        height: 2.6rem;
+      }
+      .brand-dot,
+      .brand-sub-pill {
+        display: none;
+      }
+      .nav-actions {
+        margin-left: auto;
+        gap: 0.5rem;
+      }
+      .lang-btn {
+        font-size: 1.12rem;
+        padding: 0.45rem 0.8rem;
+      }
+      .nav-actions .j-btn-sm .j-btn-inner {
+        padding: 0.6rem 1.05rem;
+        font-size: 1.15rem;
+      }
+      .nav-links {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+        order: 3;
+        border-top: 1px solid var(--color-surface-soft);
+        padding-top: 0.55rem;
+        gap: 0.2rem;
+      }
+      .nav-link {
+        font-size: 1.18rem;
+        padding: 0.5rem 0.2rem;
+        text-align: center;
+      }
+
+      /* Mobile Hero Cover */
+      .hero-section {
+        padding: 12.2rem 0 3.6rem;
+      }
+      .hero-char-showcase {
+        gap: 1.2rem;
+        margin-bottom: 1.6rem;
+      }
+      .hero-floating-char,
+      .hero-floating-char.char-left,
+      .hero-floating-char.char-right {
+        width: 11.6rem;
+        padding: 0.7rem 0.7rem 0.9rem;
+        border-radius: 2.0rem;
+      }
+      .hero-floating-char .char-mini-tag {
+        font-size: 1.1rem;
+        padding: 0.3rem 0.9rem;
+      }
+      .pill-tag {
+        white-space: normal;
+        font-size: 1.2rem;
+        padding: 0.65rem 1.3rem;
+        line-height: 1.35;
+        text-align: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .hero-title,
+      html[data-lang="en"] .hero-title {
+        font-size: clamp(2.65rem, 7.6vw, 3.5rem);
+        line-height: 1.22;
+      }
+      .hero-title .highlight-pill {
+        padding: 0.08em 0.36em 0.12em 0.24em;
+        margin-top: 0.2rem;
+      }
+      .hero-subhead {
+        font-size: 1.42rem;
+        line-height: 1.56;
+        padding: 0 0.4rem;
+      }
+      .hero-cta-row {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .hero-cta-row .j-btn {
+        width: 100%;
+      }
+      .hero-cta-row .j-btn-lg .j-btn-inner {
+        width: 100%;
+        justify-content: center;
+        padding: 1.35rem 2.0rem;
+        font-size: 1.5rem;
+      }
+
+      /* Mobile Hero Stage: Video First, Playlist Second, Highlights Third */
+      .hero-stage-wrapper {
+        margin-top: 2.8rem;
+      }
+      .hero-stage-panel {
+        padding: 1.8rem 1.4rem;
+        border-radius: 2.8rem;
+      }
+      .studio-workspace {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+      }
+      .stage-center-canvas {
+        order: 1;
+        padding: 0.4rem 0;
+      }
+      .floating-reel-frame {
+        width: 78vw;
+        max-width: 26.5rem;
+        border-radius: 2.4rem;
+      }
+      .studio-workspace > .ui-fragment-card:first-child {
+        order: 2;
+      }
+      .studio-workspace > .ui-fragment-card:last-child {
+        order: 3;
+      }
+      .ui-fragment-card {
+        padding: 1.6rem;
+        border-radius: 2.0rem;
+      }
+      .layer-item {
+        font-size: 1.3rem;
+        padding: 0.9rem 1.1rem;
+      }
+      .spec-kv {
+        font-size: 1.3rem;
+        white-space: normal;
+        gap: 0.8rem;
+      }
+
+      /* Mobile Trust Cards */
+      .trust-section {
+        padding: 1.8rem 0 3.6rem;
+      }
+      .partner-badge-row {
+        flex-direction: column;
+        gap: 1.0rem;
+      }
+      .partner-card {
+        width: 100%;
+        padding: 1.4rem 1.8rem;
+        border-radius: 2.0rem;
+      }
+
+      /* Mobile Showcase Grid */
+      .showcase-section,
+      .bento-section {
+        padding: 4.5rem 0;
+      }
+      .section-header {
+        margin-bottom: 2.6rem;
+      }
+      .section-title {
+        font-size: clamp(2.4rem, 6.8vw, 3.2rem);
+      }
+      .section-desc {
+        font-size: 1.4rem;
+      }
+      .filter-row {
+        gap: 0.6rem;
+        margin-bottom: 2.2rem;
+      }
+      .filter-pill {
+        font-size: 1.28rem;
+        padding: 0.8rem 1.35rem;
+      }
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+      }
+      .j-portfolio-card {
+        padding: 1.8rem;
+        border-radius: 2.6rem;
+      }
+      .j-card-holder {
+        aspect-ratio: auto;
+        padding: 0.8rem 0 1.4rem;
+        margin-bottom: 0.4rem;
+      }
+      .j-portfolio-card.is-reels .j-card-media {
+        width: 72%;
+      }
+      .j-portfolio-card.is-portrait .j-card-media {
+        width: 84%;
+      }
+      .j-card-title {
+        font-size: 1.65rem;
+        white-space: normal;
+      }
+      .j-card-subtitle {
+        font-size: 1.28rem;
+        white-space: normal;
+      }
+
+      /* Mobile Bento Character Cards & Scale Banner */
+      .section-panel {
+        padding: 2.2rem 1.5rem;
+        border-radius: 2.6rem;
+        gap: 2.2rem;
+      }
+      .panel-h3 {
+        font-size: 2.2rem;
+      }
+      .panel-desc {
+        font-size: 1.38rem;
+      }
+      .char-spec-list li {
+        font-size: 1.32rem;
+        white-space: normal;
+        align-items: flex-start;
+      }
+      .scale-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2.2rem 1.8rem;
+        border-radius: 2.6rem;
+      }
+      .scale-pill-group {
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        display: grid;
+        gap: 0.8rem;
+      }
+      .scale-stat-box {
+        min-width: 0;
+        padding: 1.2rem 0.8rem;
+      }
+      .scale-stat-box strong {
+        font-size: 1.85rem;
+      }
+
+      /* Mobile 2x2 Metrics & Process Grids */
       .metrics-grid,
-      .process-grid { grid-template-columns: 1fr; }
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+      .metric-card,
+      .process-card {
+        padding: 2.0rem 1.5rem;
+        border-radius: 2.2rem;
+      }
+      .metric-num {
+        font-size: 2.8rem;
+      }
+      .metric-label,
+      .process-title {
+        font-size: 1.55rem;
+        white-space: normal;
+      }
+      .metric-desc,
+      .process-desc {
+        font-size: 1.25rem;
+      }
+
+      /* Mobile Dark Pricing Card */
+      .dark-collab-panel {
+        padding: 2.4rem 1.6rem;
+        border-radius: 2.6rem;
+        gap: 2.2rem;
+      }
+      .rate-list {
+        padding: 1.8rem 1.5rem;
+        border-radius: 2.0rem;
+        gap: 1.2rem;
+      }
+      .rate-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+        font-size: 1.38rem;
+      }
+      .rate-price {
+        font-size: 1.65rem;
+        align-self: flex-end;
+      }
+
+      /* Mobile Footer Curtain */
       .footer-curtain-inner {
-        border-bottom-left-radius: 4rem;
-        border-bottom-right-radius: 4rem;
-        padding: 7rem 1.6rem 4.5rem;
+        border-bottom-left-radius: 3.6rem;
+        border-bottom-right-radius: 3.6rem;
+        padding: 5.5rem 1.4rem 4.0rem;
+      }
+      .footer-display-title {
+        font-size: clamp(2.4rem, 7vw, 3.2rem);
+      }
+      .footer-subtext {
+        font-size: 1.4rem;
+      }
+      .footer-under-row {
+        flex-direction: column;
+        text-align: center;
+        font-size: 1.22rem;
       }
     }
 
@@ -1684,6 +2070,11 @@
 </head>
 <body>
 
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-track">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  </div>
+
   <!-- ========================================================================
        STICKY PROPOSAL HEADER (Single-Line Guaranteed + KR/EN Switcher)
        ======================================================================== -->
@@ -1703,25 +2094,25 @@
 
         <ul class="nav-links">
           <li>
-            <a href="#showcase" class="nav-link">
+            <a href="#showcase" class="nav-link" data-section="showcase">
               <span class="lang-kr">01. 레퍼런스</span>
               <span class="lang-en">01. Showcase</span>
             </a>
           </li>
           <li>
-            <a href="#characters" class="nav-link">
+            <a href="#characters" class="nav-link" data-section="characters">
               <span class="lang-kr">02. 캐릭터 IP</span>
               <span class="lang-en">02. Characters</span>
             </a>
           </li>
           <li>
-            <a href="#impact" class="nav-link">
+            <a href="#impact" class="nav-link" data-section="impact">
               <span class="lang-kr">03. 채널 지표</span>
               <span class="lang-en">03. Metrics</span>
             </a>
           </li>
           <li>
-            <a href="#collab" class="nav-link">
+            <a href="#collab" class="nav-link" data-section="collab">
               <span class="lang-kr">04. 단가 안내</span>
               <span class="lang-en">04. Pricing</span>
             </a>
@@ -1734,14 +2125,6 @@
             <button type="button" class="lang-btn active" id="btnLangKr" onclick="setLanguage('kr')">KR 국문</button>
             <button type="button" class="lang-btn" id="btnLangEn" onclick="setLanguage('en')">EN 영문</button>
           </div>
-
-          <a href="./Musahee_Proposal_KR.pdf" download="오늘도무사히_광고제안서_2026.pdf" id="navPdfBtn" class="j-btn j-btn-lilac j-btn-sm no-print">
-            <span class="j-btn-inner">
-              <span class="lang-kr">국문 PDF 저장</span>
-              <span class="lang-en">Download EN PDF</span>
-              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
-            </span>
-          </a>
 
           <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-black j-btn-sm">
             <span class="j-btn-inner">
@@ -1829,20 +2212,18 @@
               </span>
             </p>
 
-            <!-- Proposal Quick Jump & PDF Download CTAs -->
+            <!-- Proposal Quick Jump CTAs -->
             <div class="hero-cta-row">
-              <a href="./Musahee_Proposal_KR.pdf" download="오늘도무사히_광고제안서_2026.pdf" class="j-btn j-btn-lilac j-btn-lg no-print">
+              <a href="#showcase" class="j-btn j-btn-lilac j-btn-lg">
                 <span class="j-btn-inner">
-                  <span class="lang-kr">국문 제안서 PDF 다운로드</span>
-                  <span class="lang-en">Download Korean PDF</span>
-                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+                  <span class="lang-kr">대표 레퍼런스 영상 보기</span>
+                  <span class="lang-en">Explore Viral &amp; Ad Reels</span>
                 </span>
               </a>
-              <a href="./Musahee_MediaKit_Proposal_EN.pdf" download="Musahee_MediaKit_Proposal_EN.pdf" class="j-btn j-btn-gray j-btn-lg no-print">
+              <a href="#collab" class="j-btn j-btn-gray j-btn-lg">
                 <span class="j-btn-inner">
-                  <span class="lang-kr">영문 제안서 PDF (EN)</span>
-                  <span class="lang-en">Download English PDF (EN)</span>
-                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+                  <span class="lang-kr">단가 및 협업 문의</span>
+                  <span class="lang-en">Pricing &amp; Collaboration</span>
                 </span>
               </a>
               <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-black j-btn-lg">
@@ -1913,8 +2294,8 @@
                   </div>
                 </div>
                 <div class="stage-helper-note">
-                  <span class="lang-kr">PDF에서는 영상 하단 [인스타 원본 보기] 클릭 시 바로 재생됩니다.</span>
-                  <span class="lang-en">In PDF, click [Watch on IG] on any card to play the original reel.</span>
+                  <span class="lang-kr">목록을 클릭하면 중앙 플레이어에서 영상이 즉시 전환됩니다.</span>
+                  <span class="lang-en">Click any item above to switch the center reel player.</span>
                 </div>
               </div>
 
@@ -2768,21 +3149,21 @@
             <div class="rate-row">
               <span>
                 <span class="lang-kr">브랜디드 릴스 1편 (기획 · 제작 · 업로드 포함)</span>
-                <span class="lang-en">1x Branded Reel (Script, Production &amp; Upload)</span>
+                <span class="lang-en">Branded Reel (Script, Production &amp; Upload)</span>
               </span>
               <span class="rate-price">
                 <span class="lang-kr">100만원<span class="rate-vat">(VAT 별도)</span></span>
-                <span class="lang-en">KRW 1,000,000<span class="rate-vat">(~USD 720)</span></span>
+                <span class="lang-en">KRW 1,000,000<span class="rate-vat">(~$720)</span></span>
               </span>
             </div>
             <div class="rate-row">
               <span>
                 <span class="lang-kr">2차 활용권 (자사몰 · 메타 광고 소재 활용)</span>
-                <span class="lang-en">Secondary Paid Ad / Website Usage Rights</span>
+                <span class="lang-en">Secondary Paid Ad / Website Usage</span>
               </span>
               <span class="rate-price">
                 <span class="lang-kr">+50만원</span>
-                <span class="lang-en">+KRW 500,000<span class="rate-vat">(~USD 360)</span></span>
+                <span class="lang-en">+KRW 500,000<span class="rate-vat">(~$360)</span></span>
               </span>
             </div>
             <div class="rate-row">
@@ -2792,7 +3173,7 @@
               </span>
               <span class="rate-price">
                 <span class="lang-kr">+30만원</span>
-                <span class="lang-en">+KRW 300,000<span class="rate-vat">(~USD 220)</span></span>
+                <span class="lang-en">+KRW 300,000<span class="rate-vat">(~$220)</span></span>
               </span>
             </div>
             <div class="rate-row">
@@ -2802,7 +3183,7 @@
               </span>
               <span class="rate-price">
                 <span class="lang-kr">+30만원</span>
-                <span class="lang-en">+KRW 300,000<span class="rate-vat">(~USD 220)</span></span>
+                <span class="lang-en">+KRW 300,000<span class="rate-vat">(~$220)</span></span>
               </span>
             </div>
           </div>
@@ -2921,7 +3302,7 @@
       }
     })();
 
-    // 2. Force Video Autoplay
+    // 2. Force Video Autoplay + Scroll-Responsive Animations + Scroll-Spy
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('video').forEach(v => {
         v.muted = true;
@@ -2932,6 +3313,82 @@
           p.catch(() => {});
         }
       });
+
+      // Attach scroll-reveal classes to all proposal sections & cards
+      const revealGroups = [
+        '.hero-top-wrap',
+        '.hero-stage-panel',
+        '.trust-section',
+        '.section-header',
+        '.filter-row',
+        '.j-portfolio-card',
+        '.section-panel',
+        '.metric-card',
+        '.process-card',
+        '.dark-collab-panel',
+        '.footer-top-cta'
+      ];
+
+      document.querySelectorAll(revealGroups.join(',')).forEach((el, idx) => {
+        el.classList.add('scroll-reveal');
+        if (
+          el.classList.contains('j-portfolio-card') ||
+          el.classList.contains('metric-card') ||
+          el.classList.contains('process-card') ||
+          el.classList.contains('section-panel')
+        ) {
+          const delayClass = `scroll-reveal-delay-${(idx % 3) + 1}`;
+          el.classList.add(delayClass);
+        }
+      });
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      );
+
+      document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+      // Scroll Progress Bar + Sticky Header State + Section Scroll-Spy
+      const progressBar = document.getElementById('scrollProgressBar');
+      const siteHeader = document.getElementById('siteHeader');
+      const navLinks = document.querySelectorAll('.nav-link[data-section]');
+      const trackedSections = ['showcase', 'characters', 'impact', 'collab']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      function onWindowScroll() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (progressBar && docHeight > 0) {
+          const pct = Math.min(100, Math.max(0, (scrollTop / docHeight) * 100));
+          progressBar.style.width = pct + '%';
+        }
+        if (siteHeader) {
+          siteHeader.classList.toggle('is-scrolled', scrollTop > 28);
+        }
+
+        // Scroll-Spy for nav links
+        let currentId = '';
+        const spyOffset = scrollTop + window.innerHeight * 0.32;
+        trackedSections.forEach(sec => {
+          if (sec.offsetTop <= spyOffset) {
+            currentId = sec.id;
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('data-section') === currentId);
+        });
+      }
+
+      window.addEventListener('scroll', onWindowScroll, { passive: true });
+      onWindowScroll();
     });
 
     // 3. Hero Stage Video Switcher & Sound Toggle
@@ -3030,4 +3487,3 @@
   </script>
 </body>
 </html>
-
