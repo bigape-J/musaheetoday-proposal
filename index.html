@@ -1059,6 +1059,13 @@
       align-items: center;
       gap: 1.1rem;
       min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .j-card-meta-left > div:last-child {
+      min-width: 0;
+      flex: 1 1 auto;
+      overflow: hidden;
     }
 
     .j-card-badge-num {
@@ -1161,10 +1168,16 @@
     }
 
     .panel-desc {
-      font-size: 1.65rem;
+      font-size: 1.6rem;
       font-weight: 500;
       color: var(--color-body);
       line-height: 1.62;
+    }
+
+    .section-panel .panel-desc .desktop-line,
+    .dark-collab-panel .panel-desc .desktop-line {
+      display: inline;
+      white-space: normal;
     }
 
     .product-mockup-card {
@@ -2033,6 +2046,20 @@
         flex-direction: column;
         text-align: center;
         font-size: 1.18rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-actions .j-btn-sm .j-btn-inner {
+        padding: 0.45rem 0.72rem;
+        font-size: 1.02rem;
+      }
+      .lang-btn {
+        font-size: 1.0rem;
+        padding: 0.34rem 0.52rem;
+      }
+      .brand-logo {
+        font-size: 1.32rem;
       }
     }
 
