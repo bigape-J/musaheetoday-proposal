@@ -2185,13 +2185,13 @@
             <button type="button" class="lang-btn" id="btnLangEn" onclick="setLanguage('en')">EN 영문</button>
           </div>
 
-          <a href="mailto:musaheetoday@gmail.com" class="j-btn j-btn-black j-btn-sm">
+          <button type="button" class="j-btn j-btn-black j-btn-sm" onclick="openContactGuide()">
             <span class="j-btn-inner">
               <span class="lang-kr">이메일 문의하기</span>
               <span class="lang-en">Email Inquiry</span>
-              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
             </span>
-          </a>
+          </button>
         </div>
       </nav>
     </div>
@@ -3188,19 +3188,19 @@
               </span>
             </p>
             <div style="margin-top: 2.0rem; display:flex; gap:1.2rem; flex-wrap:wrap;">
-              <a href="mailto:musaheetoday@gmail.com" class="j-btn j-btn-lilac">
+              <button type="button" class="j-btn j-btn-lilac" onclick="openContactGuide()">
                 <span class="j-btn-inner">
-                  <span class="lang-kr">musaheetoday@gmail.com 문의</span>
-                  <span class="lang-en">Email musaheetoday@gmail.com</span>
+                  <span class="lang-kr">musaheetoday@gmail.com 문의 (복사)</span>
+                  <span class="lang-en">Copy Email: musaheetoday@gmail.com</span>
+                </span>
+              </button>
+              <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-white no-print">
+                <span class="j-btn-inner">
+                  <span class="lang-kr">인스타그램 채널 보기</span>
+                  <span class="lang-en">View Instagram</span>
                   <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
                 </span>
               </a>
-              <button type="button" class="j-btn j-btn-white no-print" onclick="openContactGuide()">
-                <span class="j-btn-inner">
-                  <span class="lang-kr">이메일 주소 복사</span>
-                  <span class="lang-en">Copy Email Address</span>
-                </span>
-              </button>
             </div>
           </div>
 
@@ -3278,20 +3278,13 @@
             <span class="lang-en"><span class="desktop-line">Send inquiries for branded Reels, 4:5 feed comics, and IP collaborations to musaheetoday@gmail.com.</span></span>
           </p>
           <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center; margin-top: 0.6rem;">
-            <a href="mailto:musaheetoday@gmail.com" class="j-btn j-btn-black j-btn-lg">
+            <button type="button" class="j-btn j-btn-black j-btn-lg" onclick="openContactGuide()">
               <span class="j-btn-inner">
-                <span class="lang-kr">musaheetoday@gmail.com 메일 보내기</span>
-                <span class="lang-en">Email: musaheetoday@gmail.com</span>
-                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
-              </span>
-            </a>
-            <button type="button" class="j-btn j-btn-lilac j-btn-lg" onclick="openContactGuide()">
-              <span class="j-btn-inner">
-                <span class="lang-kr">이메일 주소 복사하기</span>
-                <span class="lang-en">Copy Email Address</span>
+                <span class="lang-kr">musaheetoday@gmail.com 이메일 복사</span>
+                <span class="lang-en">Copy Email: musaheetoday@gmail.com</span>
               </span>
             </button>
-            <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-gray j-btn-lg">
+            <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-lilac j-btn-lg">
               <span class="j-btn-inner">
                 <span class="lang-kr">인스타그램 @musaheetoday</span>
                 <span class="lang-en">Instagram @musaheetoday</span>
@@ -3328,8 +3321,8 @@
 
   <!-- Toast -->
   <div class="copy-toast" id="copyToast">
-    <span class="lang-kr">공식 이메일(musaheetoday@gmail.com)이 복사되었습니다. 편하게 문의 메일 보내주세요!</span>
-    <span class="lang-en">Copied musaheetoday@gmail.com! Feel free to send your inquiry via email.</span>
+    <span class="lang-kr">이메일 링크가 복사되었습니다 (musaheetoday@gmail.com)</span>
+    <span class="lang-en">Email link copied to clipboard (musaheetoday@gmail.com)</span>
   </div>
 
   <script>
@@ -3541,13 +3534,29 @@
     }
 
     // 6. Contact Guide Toast (Copies musaheetoday@gmail.com)
+    let copyToastTimer = null;
     function openContactGuide() {
-      const toast = document.getElementById('copyToast');
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText('musaheetoday@gmail.com');
+      const email = 'musaheetoday@gmail.com';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).catch(() => fallbackCopy(email));
+      } else {
+        fallbackCopy(email);
       }
+      const toast = document.getElementById('copyToast');
       toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3200);
+      if (copyToastTimer) clearTimeout(copyToastTimer);
+      copyToastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
     }
   </script>
 </body>
