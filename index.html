@@ -1,0 +1,3033 @@
+<!DOCTYPE html>
+<html lang="ko" data-lang="kr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>오늘도 무사히 (Musahee) — 2026 브랜드 광고 · 협업 제안서 (Media Kit)</title>
+
+  <!-- Web Fonts: Pretendard & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <style>
+    /* ==========================================================================
+       1. JITTER DESIGN SYSTEM TOKENS (Extracted from DESIGN.md)
+       ========================================================================== */
+    :root {
+      --color-canvas: #ffffff;
+      --color-surface-soft: #f2f1f3;
+      --color-surface: #e8e7ec;
+      --color-hairline: #d4d3d8;
+
+      --color-ink: #19171c;
+      --color-black: #000000;
+      --color-body: #626067;
+      --color-muted: #77767b;
+      --color-muted-soft: #8f8a98;
+      --color-on-primary: #ffffff;
+      --color-input-surface: #26252a;
+
+      --color-accent-lilac: #a981ff;
+      --color-accent-lilac-soft: #b593ff;
+      --color-accent-purple: #7a40ed;
+      --color-accent-yellow: #edff5a;
+
+      --font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      --font-display: "Plus Jakarta Sans", "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+      --ease-overshoot: cubic-bezier(0.25, 1.6, 0.5, 1);
+      --ease-overshoot-linear: linear(0, 0.452 7.8%, 0.788 16.1%, 1.014 24.9%, 1.081 29.5%, 1.123 34.4%, 1.141 39.7%, 1.14 45.9%, 1.015 74.9%, 0.994 87.3%, 1);
+
+      --shadow-floating-media:
+        0 89px 36px rgba(0, 0, 0, 0.01),
+        0 50px 30px rgba(0, 0, 0, 0.03),
+        0 22px 22px rgba(0, 0, 0, 0.04),
+        0 6px 12px rgba(0, 0, 0, 0.05),
+        0 0 0 rgba(0, 0, 0, 0.05);
+
+      --shadow-hero-stage:
+        0 189px 53px rgba(0, 0, 0, 0),
+        0 121px 48px rgba(0, 0, 0, 0.01),
+        0 68px 41px rgba(0, 0, 0, 0.03),
+        0 30px 30px rgba(0, 0, 0, 0.04),
+        0 8px 17px rgba(0, 0, 0, 0.05);
+
+      --shadow-hover-pill: 0 25px 52px rgba(0, 0, 0, 0.25);
+
+      --radius-pill: 100rem;
+      --radius-xl: 3.2rem;
+      --radius-lg: 2.4rem;
+      --radius-md: 1.6rem;
+      --radius-curtain: 8rem;
+    }
+
+    /* ==========================================================================
+       2. RESET, BASE TYPOGRAPHY & BILINGUAL TOGGLE RULES
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 62.5%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--color-ink);
+      background-color: var(--color-canvas);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      overflow-x: hidden;
+    }
+
+    /* Bilingual Display Toggle */
+    html[data-lang="kr"] .lang-en { display: none !important; }
+    html[data-lang="en"] .lang-kr { display: none !important; }
+
+    .icon-svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      stroke: currentColor;
+      stroke-width: 2.3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 128rem;
+      margin: 0 auto;
+      padding: 0 2.4rem;
+    }
+
+    .page-canvas {
+      background-color: var(--color-canvas);
+      position: relative;
+      z-index: 20;
+    }
+
+    /* ==========================================================================
+       3. FLOATING TOP HEADER (Single-Line Guaranteed)
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 1.6rem;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .nav-shell {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      padding: 1.0rem 1.4rem 1.0rem 2.0rem;
+      border-radius: var(--radius-pill);
+      background-color: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(25, 23, 28, 0.06);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
+      white-space: nowrap;
+    }
+
+    .brand-logo {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--color-ink);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .brand-avatar {
+      width: 3.2rem;
+      height: 3.2rem;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 35%;
+      border: 2px solid var(--color-accent-lilac-soft);
+      flex-shrink: 0;
+    }
+
+    .brand-dot {
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      background-color: var(--color-accent-purple);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .brand-sub-pill {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-body);
+      background: var(--color-surface-soft);
+      padding: 0.35rem 1.0rem;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    .nav-link {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--color-ink);
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-pill);
+      transition: background-color 0.2s var(--ease-out-quad);
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      background-color: var(--color-surface-soft);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* Language Toggle Pill */
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      background: var(--color-surface-soft);
+      padding: 0.3rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(25, 23, 28, 0.06);
+    }
+
+    .lang-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: var(--color-body);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 0.45rem 1.0rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--color-ink);
+      color: var(--color-on-primary);
+    }
+
+    /* Jitter Signature Spring Pill Buttons */
+    .j-btn {
+      appearance: none;
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      position: relative;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .j-btn-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border-radius: var(--radius-pill);
+      padding: 1.1rem 2.0rem;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      white-space: nowrap;
+      transition:
+        transform 0.5s var(--ease-overshoot-linear),
+        background-color 0.2s var(--ease-out-quad),
+        color 0.2s var(--ease-out-quad);
+    }
+
+    .j-btn:hover .j-btn-inner {
+      transform: scale(1.05);
+    }
+
+    .j-btn:active .j-btn-inner {
+      transform: scale(0.98);
+    }
+
+    .j-btn-lg .j-btn-inner {
+      padding: 1.6rem 3.0rem;
+      font-size: 1.75rem;
+    }
+
+    .j-btn-sm .j-btn-inner {
+      padding: 0.85rem 1.5rem;
+      font-size: 1.35rem;
+    }
+
+    .j-btn-black { color: var(--color-on-primary); }
+    .j-btn-black .j-btn-inner { background-color: var(--color-ink); }
+
+    .j-btn-lilac { color: var(--color-ink); }
+    .j-btn-lilac .j-btn-inner { background-color: var(--color-accent-lilac-soft); }
+    .j-btn-lilac:hover .j-btn-inner { background-color: var(--color-accent-lilac); }
+
+    .j-btn-gray { color: var(--color-ink); }
+    .j-btn-gray .j-btn-inner { background-color: var(--color-surface-soft); }
+    .j-btn-gray:hover .j-btn-inner { background-color: var(--color-surface); }
+
+    .j-btn-white { color: var(--color-ink); }
+    .j-btn-white .j-btn-inner {
+      background-color: var(--color-canvas);
+      box-shadow: var(--shadow-hover-pill);
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION (Cover Page with Cute Musahee Polaroids)
+       ========================================================================== */
+    .hero-section {
+      padding: 11.5rem 0 5.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-top-wrap {
+      position: relative;
+      max-width: 136rem;
+      margin: 0 auto;
+    }
+
+    .hero-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 2.2rem;
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-char-showcase {
+      pointer-events: none;
+    }
+
+    .hero-floating-char {
+      pointer-events: auto;
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      background: var(--color-canvas);
+      padding: 1.0rem 1.0rem 1.2rem;
+      border-radius: 2.6rem;
+      box-shadow: var(--shadow-floating-media);
+      border: 1px solid var(--color-surface-soft);
+      width: 15.0rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      transition: transform 0.5s var(--ease-overshoot-linear);
+      cursor: pointer;
+    }
+
+    .hero-floating-char img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 35%;
+      border-radius: 1.8rem;
+      display: block;
+    }
+
+    .hero-floating-char .char-mini-tag {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-ink);
+      background: var(--color-surface-soft);
+      padding: 0.4rem 1.2rem;
+      border-radius: 5rem;
+      white-space: nowrap;
+    }
+
+    .hero-floating-char.char-left {
+      left: -1.6rem;
+      transform: translateY(-48%) rotate(-6deg);
+    }
+
+    .hero-floating-char.char-left:hover {
+      transform: translateY(-52%) rotate(-2deg) scale(1.07);
+    }
+
+    .hero-floating-char.char-right {
+      right: -1.6rem;
+      transform: translateY(-48%) rotate(6deg);
+    }
+
+    .hero-floating-char.char-right:hover {
+      transform: translateY(-52%) rotate(2deg) scale(1.07);
+    }
+
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background-color: var(--color-surface-soft);
+      color: var(--color-ink);
+      border-radius: 4rem;
+      padding: 0.8rem 2.0rem;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 0.4s var(--ease-overshoot-linear), background-color 0.2s;
+    }
+
+    .pill-tag:hover {
+      transform: scale(1.03);
+      background-color: var(--color-surface);
+    }
+
+    .pill-tag .badge-dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      background-color: var(--color-accent-purple);
+      flex-shrink: 0;
+    }
+
+    .pill-tag .fake-link {
+      color: var(--color-accent-purple);
+      font-weight: 800;
+      margin-left: 0.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Oversized Display Headline */
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.6rem, 4.7vw, 6.8rem);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.032em;
+      color: var(--color-ink);
+      max-width: 102rem;
+    }
+
+    html[data-lang="en"] .hero-title {
+      font-size: clamp(3.2rem, 4.0vw, 5.8rem);
+    }
+
+    .hero-title .highlight-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 1.1rem;
+      background-color: var(--color-accent-lilac-soft);
+      color: var(--color-ink);
+      padding: 0.28rem 2.2rem 0.55rem 0.9rem;
+      border-radius: 999px;
+      line-height: 1.05;
+      vertical-align: middle;
+    }
+
+    .hero-title .inline-musahee-face {
+      width: clamp(4.0rem, 4.8vw, 6.0rem);
+      height: clamp(4.0rem, 4.8vw, 6.0rem);
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 36%;
+      border: 3px solid var(--color-canvas);
+      box-shadow: 0 4px 12px rgba(25, 23, 28, 0.15);
+      flex-shrink: 0;
+    }
+
+    .hero-subhead {
+      font-family: var(--font-sans);
+      font-size: clamp(1.65rem, 1.65vw, 1.98rem);
+      font-weight: 600;
+      line-height: 1.65;
+      letter-spacing: -0.02em;
+      color: var(--color-body);
+      max-width: 102rem;
+    }
+
+    .desktop-line {
+      display: inline;
+      white-space: nowrap;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 0.4rem;
+    }
+
+    /* ==========================================================================
+       5. HERO INTERACTIVE SHOWREEL STAGE
+       ========================================================================== */
+    .hero-stage-wrapper {
+      margin-top: 3.8rem;
+      width: 100%;
+    }
+
+    .hero-stage-panel {
+      background-color: var(--color-surface-soft);
+      border-radius: var(--radius-xl);
+      padding: 4.0rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .studio-workspace {
+      display: grid;
+      grid-template-columns: 32rem 1fr 32rem;
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .ui-fragment-card {
+      background-color: var(--color-canvas);
+      border-radius: var(--radius-lg);
+      padding: 2.4rem;
+      box-shadow: var(--shadow-hero-stage);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      min-width: 0;
+    }
+
+    .ui-fragment-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      font-family: var(--font-display);
+      font-size: 1.38rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--color-muted);
+      white-space: nowrap;
+    }
+
+    .ui-chip {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      padding: 0.35rem 0.95rem;
+      border-radius: 5rem;
+      color: var(--color-ink);
+      white-space: nowrap;
+    }
+
+    .ui-chip.lilac { background: var(--color-accent-lilac-soft); }
+    .ui-chip.yellow { background: var(--color-accent-yellow); }
+
+    .stage-center-canvas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .floating-reel-frame {
+      width: 100%;
+      max-width: 33rem;
+      aspect-ratio: 9 / 16;
+      background-color: var(--color-ink);
+      border-radius: 2.8rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-floating-media);
+      position: relative;
+      border: 4px solid var(--color-canvas);
+    }
+
+    .floating-reel-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .reel-live-badge {
+      position: absolute;
+      top: 1.4rem;
+      left: 1.4rem;
+      right: 1.4rem;
+      background: rgba(25, 23, 28, 0.82);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      padding: 0.65rem 1.2rem;
+      border-radius: 5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      z-index: 3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .reel-live-badge::before {
+      content: "";
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      background: var(--color-accent-yellow);
+      flex-shrink: 0;
+    }
+
+    .reel-sound-btn {
+      position: absolute;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      z-index: 5;
+      border: none;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: 1.22rem;
+      font-weight: 800;
+      padding: 0.7rem 1.25rem;
+      border-radius: 5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      transition: transform 0.3s var(--ease-overshoot-linear);
+      white-space: nowrap;
+    }
+
+    .reel-sound-btn:hover {
+      transform: scale(1.06);
+    }
+
+    .layer-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .layer-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      padding: 1.1rem 1.25rem;
+      border-radius: 1.3rem;
+      background: var(--color-surface-soft);
+      font-size: 1.36rem;
+      font-weight: 700;
+      color: var(--color-ink);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.25s var(--ease-overshoot-linear), background-color 0.2s, color 0.2s;
+    }
+
+    .layer-item > span:first-child {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .layer-item:hover, .layer-item.active {
+      background: var(--color-ink);
+      color: var(--color-on-primary);
+      transform: scale(1.02);
+    }
+
+    .layer-item .time-tag {
+      font-size: 1.15rem;
+      font-weight: 800;
+      padding: 0.25rem 0.8rem;
+      border-radius: 5rem;
+      background: rgba(0, 0, 0, 0.07);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .layer-item.active .time-tag,
+    .layer-item:hover .time-tag {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+
+    .stage-helper-note {
+      font-size: 1.25rem;
+      color: var(--color-muted);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+
+    .impact-highlight-box {
+      background: var(--color-input-surface);
+      border-radius: 1.8rem;
+      padding: 1.8rem;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .impact-highlight-num {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--color-accent-yellow);
+      line-height: 1.1;
+      white-space: nowrap;
+    }
+
+    .impact-highlight-desc {
+      font-size: 1.32rem;
+      color: #d7d7db;
+      line-height: 1.48;
+    }
+
+    .spec-kv-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      font-size: 1.4rem;
+    }
+
+    .spec-kv {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--color-surface-soft);
+      white-space: nowrap;
+    }
+
+    .spec-kv:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .spec-kv span:first-child { color: var(--color-muted); font-weight: 600; }
+    .spec-kv span:last-child { color: var(--color-ink); font-weight: 800; }
+
+    /* ==========================================================================
+       6. BRAND TRUST ROW
+       ========================================================================== */
+    .trust-section {
+      padding: 4.5rem 0 8rem;
+      text-align: center;
+    }
+
+    .trust-headline-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.4rem;
+      margin-bottom: 2.8rem;
+      color: var(--color-body);
+      font-size: 1.75rem;
+      white-space: nowrap;
+    }
+
+    .trust-headline-rule::before,
+    .trust-headline-rule::after {
+      content: "";
+      flex: 1;
+      max-width: 16rem;
+      height: 1px;
+      background-color: var(--color-hairline);
+    }
+
+    .trust-headline-rule strong {
+      color: var(--color-ink);
+      font-weight: 800;
+    }
+
+    .partner-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+
+    .partner-item {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--color-ink);
+      background: var(--color-surface-soft);
+      padding: 1.2rem 2.4rem;
+      border-radius: var(--radius-pill);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .partner-item .partner-cat {
+      font-family: var(--font-sans);
+      font-size: 1.32rem;
+      font-weight: 600;
+      color: var(--color-muted);
+    }
+
+    /* ==========================================================================
+       7. PORTFOLIO SHOWCASE SECTION
+       ========================================================================== */
+    .showcase-section {
+      padding: 5.5rem 0 10rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .section-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 4.5vw, 5.8rem);
+      font-weight: 900;
+      line-height: 1.16;
+      letter-spacing: -0.03em;
+      color: var(--color-ink);
+    }
+
+    .section-desc {
+      font-size: clamp(1.62rem, 1.68vw, 1.92rem);
+      font-weight: 600;
+      color: var(--color-body);
+      max-width: 114rem;
+      line-height: 1.6;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.8rem;
+    }
+
+    .filter-pill {
+      appearance: none;
+      border: none;
+      background: var(--color-surface-soft);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      padding: 1.05rem 2.2rem;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      white-space: nowrap;
+      transition:
+        transform 0.4s var(--ease-overshoot-linear),
+        background-color 0.2s var(--ease-out-quad),
+        color 0.2s var(--ease-out-quad);
+    }
+
+    .filter-pill:hover {
+      transform: scale(1.05);
+    }
+
+    .filter-pill.active {
+      background: var(--color-ink);
+      color: var(--color-on-primary);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+    }
+
+    .j-portfolio-card {
+      -webkit-user-select: none;
+      user-select: none;
+      background-color: var(--color-surface-soft);
+      border-radius: var(--radius-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.2rem 2.8rem 2.8rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s var(--ease-overshoot-linear);
+    }
+
+    .j-card-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      margin-bottom: 1.4rem;
+      z-index: 4;
+      position: relative;
+    }
+
+    .j-card-stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--color-canvas);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: 1.24rem;
+      font-weight: 800;
+      padding: 0.48rem 1.15rem;
+      border-radius: 5rem;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .j-card-stat-pill .stat-dot {
+      width: 0.68rem;
+      height: 0.68rem;
+      border-radius: 50%;
+      background: var(--color-accent-purple);
+      flex-shrink: 0;
+    }
+
+    .j-card-stat-pill.is-ad .stat-dot {
+      background: #10b981;
+    }
+
+    .j-card-ig-chip {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--color-muted);
+      white-space: nowrap;
+    }
+
+    .j-card-holder {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2.0rem;
+    }
+
+    .j-card-media {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2.0rem;
+      overflow: hidden;
+      background-color: var(--color-surface);
+      box-shadow: var(--shadow-floating-media);
+      transition: transform 0.5s var(--ease-overshoot-linear);
+    }
+
+    .j-portfolio-card:hover .j-card-media {
+      transform: scale(1.03) translateY(-4px);
+    }
+
+    .j-portfolio-card.is-reels .j-card-media {
+      width: 58%;
+      aspect-ratio: 9 / 16;
+    }
+
+    .j-portfolio-card.is-portrait .j-card-media {
+      width: 74%;
+      aspect-ratio: 4 / 5;
+    }
+
+    .j-card-media video,
+    .j-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .j-card-scrim {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      transition: opacity 0.3s var(--ease-out-quad);
+      z-index: 2;
+    }
+
+    .j-card-hover-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.12);
+      z-index: 3;
+      opacity: 0;
+      pointer-events: none;
+      background: var(--color-canvas);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      padding: 1.25rem 2.2rem;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-hover-pill);
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition:
+        transform 0.4s var(--ease-overshoot-linear),
+        opacity 0.25s var(--ease-out-quad);
+    }
+
+    .j-portfolio-card:hover .j-card-scrim {
+      opacity: 1;
+    }
+
+    .j-portfolio-card:hover .j-card-hover-btn {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .j-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.0rem;
+      z-index: 4;
+      position: relative;
+    }
+
+    .j-card-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      min-width: 0;
+    }
+
+    .j-card-badge-num {
+      width: 3.8rem;
+      height: 3.8rem;
+      border-radius: 50%;
+      background: var(--color-canvas);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: 1.22rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    .j-card-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: var(--color-ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .j-card-subtitle {
+      font-family: var(--font-sans);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-muted);
+      margin-top: 0.2rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .j-card-tag {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-pill);
+      background: var(--color-canvas);
+      color: var(--color-ink);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    /* ==========================================================================
+       8. CHARACTER IP INTRODUCTION (Advertiser Perspective)
+       ========================================================================== */
+    .bento-section {
+      padding: 5.5rem 0 10rem;
+    }
+
+    .bento-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.4rem;
+    }
+
+    .section-panel {
+      background-color: var(--color-surface-soft);
+      border-radius: var(--radius-xl);
+      padding: 4.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .panel-eyebrow {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--color-accent-purple);
+    }
+
+    .panel-h3 {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      color: var(--color-ink);
+    }
+
+    .panel-desc {
+      font-size: 1.65rem;
+      font-weight: 500;
+      color: var(--color-body);
+      line-height: 1.62;
+    }
+
+    .product-mockup-card {
+      background-color: var(--color-canvas);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      box-shadow: var(--shadow-floating-media);
+      overflow: hidden;
+    }
+
+    .product-mockup-card img {
+      width: 100%;
+      height: 29rem;
+      object-fit: contain;
+      display: block;
+      background: #f9f8f4;
+      border-radius: 1.6rem;
+    }
+
+    .rule-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .rule-pill {
+      background: var(--color-canvas);
+      color: var(--color-ink);
+      font-family: var(--font-display);
+      font-size: 1.36rem;
+      font-weight: 700;
+      padding: 0.68rem 1.45rem;
+      border-radius: var(--radius-pill);
+      white-space: nowrap;
+    }
+
+    /* ==========================================================================
+       9. METRICS, WORKFLOW & COLLABORATION RATE CARD
+       ========================================================================== */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.0rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .metric-card {
+      background: var(--color-surface-soft);
+      border-radius: var(--radius-xl);
+      padding: 3.6rem 3.0rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: clamp(3.8rem, 3.8vw, 5.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--color-ink);
+      white-space: nowrap;
+    }
+
+    .metric-label {
+      font-size: 1.58rem;
+      font-weight: 700;
+      color: var(--color-body);
+      white-space: nowrap;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.0rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .process-card {
+      background: var(--color-surface-soft);
+      border-radius: var(--radius-xl);
+      padding: 3.2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .process-step-badge {
+      display: inline-flex;
+      align-self: flex-start;
+      background: var(--color-ink);
+      color: var(--color-on-primary);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 0.4rem 1.15rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .process-title {
+      font-family: var(--font-display);
+      font-size: 2.0rem;
+      font-weight: 800;
+      color: var(--color-ink);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .process-desc {
+      font-size: 1.48rem;
+      color: var(--color-body);
+      line-height: 1.58;
+    }
+
+    .dark-collab-panel {
+      background: var(--color-input-surface);
+      color: var(--color-on-primary);
+      border-radius: var(--radius-xl);
+      padding: 5.0rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3.8rem;
+      align-items: center;
+    }
+
+    .dark-collab-panel .panel-h3 {
+      color: var(--color-on-primary);
+      font-size: clamp(3.0rem, 3.4vw, 4.0rem);
+      line-height: 1.22;
+    }
+
+    .dark-collab-panel .panel-desc {
+      color: #d0cfd6;
+    }
+
+    .rate-list {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-lg);
+      padding: 2.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .rate-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      padding-bottom: 1.35rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 1.55rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .rate-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .rate-price {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--color-accent-yellow);
+      white-space: nowrap;
+    }
+
+    .rate-vat {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #b0afb8;
+      margin-left: 0.4rem;
+    }
+
+    /* ==========================================================================
+       10. JITTER CURTAIN CLOSING BANNER
+       ========================================================================== */
+    .site-footer {
+      background: var(--color-black);
+      position: relative;
+      display: block;
+    }
+
+    .footer-curtain-inner {
+      background: var(--color-surface-soft);
+      border-bottom-left-radius: var(--radius-curtain);
+      border-bottom-right-radius: var(--radius-curtain);
+      padding: 9.5rem 2rem 6.5rem;
+      position: relative;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    .footer-top-cta {
+      max-width: 118rem;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.2rem;
+    }
+
+    .footer-display-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 4.8vw, 6.2rem);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      color: var(--color-ink);
+    }
+
+    .footer-subtext {
+      font-size: clamp(1.62rem, 1.68vw, 1.92rem);
+      font-weight: 600;
+      color: var(--color-body);
+      max-width: 110rem;
+    }
+
+    .footer-under-floor {
+      background: var(--color-black);
+      color: var(--color-muted-soft);
+      padding: 3.6rem 0;
+      font-size: 1.4rem;
+    }
+
+    .footer-under-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+    }
+
+    /* ==========================================================================
+       11. LIGHTBOX MODAL & TOAST
+       ========================================================================== */
+    .video-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(25, 23, 28, 0.82);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.4rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s var(--ease-out-quad);
+    }
+
+    .video-modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .video-modal-card {
+      background: var(--color-canvas);
+      border-radius: var(--radius-xl);
+      padding: 2.8rem;
+      max-width: 48rem;
+      width: 100%;
+      box-shadow: 0 25px 52px rgba(0, 0, 0, 0.33);
+      transform: scale(0.92);
+      transition: transform 0.4s var(--ease-overshoot-linear);
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .video-modal-backdrop.is-open .video-modal-card {
+      transform: scale(1);
+    }
+
+    .video-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .video-modal-title {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .modal-close-btn {
+      border: none;
+      background: var(--color-surface-soft);
+      color: var(--color-ink);
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .video-modal-player {
+      width: 100%;
+      border-radius: 2.0rem;
+      overflow: hidden;
+      background: #000;
+      max-height: 66vh;
+    }
+
+    .copy-toast {
+      position: fixed;
+      bottom: 3.2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(10rem);
+      background: var(--color-input-surface);
+      color: var(--color-on-primary);
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      font-weight: 700;
+      padding: 1.4rem 2.8rem;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      z-index: 2000;
+      white-space: nowrap;
+      transition: transform 0.5s var(--ease-overshoot-linear);
+    }
+
+    .copy-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ==========================================================================
+       12. PDF / CLICKABLE INSTAGRAM VIDEO BUTTONS
+       ========================================================================== */
+    .pdf-poster-img {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pdf-play-link {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      background: rgba(25, 23, 28, 0.88);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 800;
+      padding: 0.62rem 1.2rem;
+      border-radius: 5rem;
+      text-decoration: none;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+      transition: transform 0.25s var(--ease-overshoot-linear), background-color 0.2s;
+    }
+
+    .pdf-play-link:hover {
+      background: var(--color-accent-purple);
+      transform: translateX(-50%) scale(1.06);
+    }
+
+    /* In Hero Stage, align left so it never collides with right sound button */
+    .floating-reel-frame .pdf-play-link {
+      left: 1.4rem;
+      bottom: 1.4rem;
+      transform: none;
+    }
+
+    .floating-reel-frame .pdf-play-link:hover {
+      transform: scale(1.05);
+    }
+
+    .pdf-play-link .play-dot {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-top: 0.4rem solid transparent;
+      border-bottom: 0.4rem solid transparent;
+      border-left: 0.65rem solid var(--color-accent-yellow);
+    }
+
+    /* ==========================================================================
+       13. RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1320px) {
+      .hero-char-showcase {
+        display: flex;
+        justify-content: center;
+        gap: 1.6rem;
+        margin-bottom: 2.2rem;
+      }
+      .hero-floating-char,
+      .hero-floating-char.char-left,
+      .hero-floating-char.char-right {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        width: 13.5rem;
+      }
+      .hero-floating-char.char-left { transform: rotate(-4deg); }
+      .hero-floating-char.char-right { transform: rotate(4deg); }
+      .hero-floating-char.char-left:hover,
+      .hero-floating-char.char-right:hover {
+        transform: scale(1.06) rotate(0deg);
+      }
+    }
+
+    @media (max-width: 1120px) {
+      .nav-links { display: none; }
+      .studio-workspace { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .bento-grid-2,
+      .dark-collab-panel { grid-template-columns: 1fr; }
+      .metrics-grid,
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-line { white-space: normal; }
+      .hero-section { padding: 11rem 0 4.5rem; }
+      .hero-stage-panel,
+      .section-panel,
+      .dark-collab-panel { padding: 2.6rem 1.8rem; }
+      .portfolio-grid,
+      .metrics-grid,
+      .process-grid { grid-template-columns: 1fr; }
+      .footer-curtain-inner {
+        border-bottom-left-radius: 4rem;
+        border-bottom-right-radius: 4rem;
+        padding: 7rem 1.6rem 4.5rem;
+      }
+    }
+
+    /* ==========================================================================
+       14. PDF / PRINT PROPOSAL OPTIMIZATION (@media print)
+       ========================================================================== */
+    @page {
+      size: 1480px 1060px;
+      margin: 0;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      html {
+        font-size: 62.5% !important;
+      }
+      body {
+        width: 1480px !important;
+        margin: 0 !important;
+        background: #ffffff !important;
+      }
+      .site-header {
+        position: relative !important;
+        top: 0 !important;
+        padding-top: 2.0rem !important;
+      }
+      .hero-section {
+        padding-top: 3.0rem !important;
+        padding-bottom: 3.5rem !important;
+      }
+      .floating-reel-frame video,
+      .j-card-media video {
+        display: none !important;
+      }
+      .floating-reel-frame .pdf-poster-img,
+      .j-card-media .pdf-poster-img {
+        display: block !important;
+      }
+      .floating-reel-frame .pdf-play-link {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+      }
+      .reel-sound-btn,
+      .no-print {
+        display: none !important;
+      }
+      .j-portfolio-card,
+      .section-panel,
+      .metric-card,
+      .process-card,
+      .dark-collab-panel,
+      .hero-stage-panel {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      .showcase-section,
+      .bento-section,
+      .site-footer {
+        break-before: page;
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       STICKY PROPOSAL HEADER (Single-Line Guaranteed + KR/EN Switcher)
+       ======================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <nav class="nav-shell" aria-label="Proposal navigation">
+        <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="brand-logo">
+          <img src="./assets/proposal_thumbs/hero_musahee.jpg" alt="Musahee" class="brand-avatar" />
+          <span class="lang-kr">오늘도 무사히</span>
+          <span class="lang-en">Musahee</span>
+          <span class="brand-dot"></span>
+          <span class="brand-sub-pill">
+            <span class="lang-kr">2026 광고 제안서</span>
+            <span class="lang-en">2026 MEDIA KIT</span>
+          </span>
+        </a>
+
+        <ul class="nav-links">
+          <li>
+            <a href="#showcase" class="nav-link">
+              <span class="lang-kr">01. 레퍼런스</span>
+              <span class="lang-en">01. Showcase</span>
+            </a>
+          </li>
+          <li>
+            <a href="#characters" class="nav-link">
+              <span class="lang-kr">02. 캐릭터 IP</span>
+              <span class="lang-en">02. Characters</span>
+            </a>
+          </li>
+          <li>
+            <a href="#impact" class="nav-link">
+              <span class="lang-kr">03. 채널 지표</span>
+              <span class="lang-en">03. Metrics</span>
+            </a>
+          </li>
+          <li>
+            <a href="#collab" class="nav-link">
+              <span class="lang-kr">04. 단가 안내</span>
+              <span class="lang-en">04. Pricing</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-actions">
+          <!-- KR / EN Language Switcher -->
+          <div class="lang-switch no-print" role="group" aria-label="Language switch">
+            <button type="button" class="lang-btn active" id="btnLangKr" onclick="setLanguage('kr')">KR 국문</button>
+            <button type="button" class="lang-btn" id="btnLangEn" onclick="setLanguage('en')">EN 영문</button>
+          </div>
+
+          <a href="./Musahee_Proposal_KR.pdf" download="오늘도무사히_광고제안서_2026.pdf" id="navPdfBtn" class="j-btn j-btn-lilac j-btn-sm no-print">
+            <span class="j-btn-inner">
+              <span class="lang-kr">국문 PDF 저장</span>
+              <span class="lang-en">Download EN PDF</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+            </span>
+          </a>
+
+          <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-black j-btn-sm">
+            <span class="j-btn-inner">
+              <span class="lang-kr">@musaheetoday 문의</span>
+              <span class="lang-en">Contact @musaheetoday</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-canvas">
+    <!-- ======================================================================
+         PROPOSAL COVER & EXECUTIVE SUMMARY (앞판 표지)
+         ====================================================================== -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-top-wrap">
+          <!-- Cute Musahee & Deundeun-i Polaroid Cards -->
+          <div class="hero-char-showcase">
+            <div class="hero-floating-char char-left" onclick="openImageModal('무사히 (Musahee)', './assets/proposal_thumbs/hero_musahee.jpg')">
+              <img src="./assets/proposal_thumbs/hero_musahee.jpg" alt="Musahee" />
+              <span class="char-mini-tag">
+                <span class="lang-kr">무사히 (Musahee)</span>
+                <span class="lang-en">Musahee (20cm)</span>
+              </span>
+            </div>
+
+            <div class="hero-floating-char char-right" onclick="openImageModal('무사히 × 든든이 (Musahee & Deundeun-i)', './assets/proposal_thumbs/hero_duo.jpg')">
+              <img src="./assets/proposal_thumbs/hero_duo.jpg" alt="Musahee and Deundeun-i" />
+              <span class="char-mini-tag">
+                <span class="lang-kr">무사히 × 든든이</span>
+                <span class="lang-en">Musahee × Deundeun-i</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="hero-stack">
+            <!-- Proposal Eyebrow Pill -->
+            <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="pill-tag">
+              <span class="badge-dot"></span>
+              <span class="lang-kr">BRAND COLLABORATION PROPOSAL · 최고 조회수 400만+ 커플 공감 캐릭터 IP</span>
+              <span class="lang-en">OFFICIAL MEDIA KIT &amp; PROPOSAL · 4M+ Peak Views Relatable Couple Character IP</span>
+              <span class="fake-link">
+                @musaheetoday
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+              </span>
+            </a>
+
+            <!-- Oversized Display Headline (Strictly 2 Lines on Desktop) -->
+            <h1 class="hero-title">
+              <span class="lang-kr">
+                <span class="desktop-line">브랜드가 사랑받는</span><br />
+                <span class="desktop-line">
+                  가장 귀여운 방법,
+                  <span class="highlight-pill">
+                    <img src="./assets/proposal_thumbs/hero_musahee.jpg" alt="무사히" class="inline-musahee-face" />
+                    오늘도 무사히
+                  </span>
+                </span>
+              </span>
+              <span class="lang-en">
+                <span class="desktop-line">The Cutest Way to Make</span><br />
+                <span class="desktop-line">
+                  Your Brand Loved,
+                  <span class="highlight-pill">
+                    <img src="./assets/proposal_thumbs/hero_musahee.jpg" alt="Musahee" class="inline-musahee-face" />
+                    Musahee
+                  </span>
+                </span>
+              </span>
+            </h1>
+
+            <!-- Supporting Copy (Strictly 2 Lines on Desktop — Zero Orphan Words) -->
+            <p class="hero-subhead">
+              <span class="lang-kr">
+                <span class="desktop-line">광고인데도 끝까지 보게 만드는 일상 공감 스토리텔링.</span><br />
+                <span class="desktop-line">작은 토끼 <b>무사히</b>와 듬직한 곰 <b>든든이</b>의 케미로 브랜드 메시지를 자연스럽게 각인시킵니다.</span>
+              </span>
+              <span class="lang-en">
+                <span class="desktop-line">Relatable everyday storytelling that audiences watch until the very last second.</span><br />
+                <span class="desktop-line">Tiny rabbit <b>Musahee</b> and giant bear <b>Deundeun-i</b> turn brand messages into viral moments.</span>
+              </span>
+            </p>
+
+            <!-- Proposal Quick Jump & PDF Download CTAs -->
+            <div class="hero-cta-row">
+              <a href="./Musahee_Proposal_KR.pdf" download="오늘도무사히_광고제안서_2026.pdf" class="j-btn j-btn-lilac j-btn-lg no-print">
+                <span class="j-btn-inner">
+                  <span class="lang-kr">국문 제안서 PDF 다운로드</span>
+                  <span class="lang-en">Download Korean PDF</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+                </span>
+              </a>
+              <a href="./Musahee_MediaKit_Proposal_EN.pdf" download="Musahee_MediaKit_Proposal_EN.pdf" class="j-btn j-btn-gray j-btn-lg no-print">
+                <span class="j-btn-inner">
+                  <span class="lang-kr">영문 제안서 PDF (EN)</span>
+                  <span class="lang-en">Download English PDF (EN)</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+                </span>
+              </a>
+              <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-black j-btn-lg">
+                <span class="j-btn-inner">
+                  <span class="lang-kr">인스타그램 공식 채널</span>
+                  <span class="lang-en">Official Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             HERO INTERACTIVE SHOWREEL STAGE (Actual Top Reels + Branded Ads)
+             ================================================================== -->
+        <div class="hero-stage-wrapper">
+          <div class="hero-stage-panel">
+            <div class="studio-workspace">
+
+              <!-- Left Card: Playlist Selector -->
+              <div class="ui-fragment-card">
+                <div class="ui-fragment-header">
+                  <span>
+                    <span class="lang-kr">핵심 레퍼런스 바로 재생</span>
+                    <span class="lang-en">Featured Viral &amp; Ad Reels</span>
+                  </span>
+                  <span class="ui-chip lilac">
+                    <span class="lang-kr">클릭 시 전환</span>
+                    <span class="lang-en">Click to Play</span>
+                  </span>
+                </div>
+                <div class="layer-list">
+                  <div class="layer-item active" onclick="switchHeroVideo('./musaheetoday_analysis/videos/Top01_DbIW6BPgjsu.mp4', '인스타 1위 · 남친이 반격했을 때 여친 특', 'Top 1 · My Boyfriend Hit Back Just Once', 'https://www.instagram.com/reel/DbIW6BPgjsu/', './assets/proposal_thumbs/top01.jpg', this)">
+                    <span>
+                      <span class="lang-kr">1위 · 남친이 반격했을 때 여친 특</span>
+                      <span class="lang-en">Top 1 · Boyfriend Hit Back Once</span>
+                    </span>
+                    <span class="time-tag">♥ 51.5K</span>
+                  </div>
+                  <div class="layer-item" onclick="switchHeroVideo('./musaheetoday_analysis/videos/Top02_DdqBKBQTqaD.mp4', '인스타 2위 · 여친이 손 안 잡아줄 때', 'Top 2 · When She Won\'t Hold My Hand', 'https://www.instagram.com/reel/DdqBKBQTqaD/', './assets/proposal_thumbs/top02.jpg', this)">
+                    <span>
+                      <span class="lang-kr">2위 · 여친이 손 안 잡아줄 때</span>
+                      <span class="lang-en">Top 2 · Won't Hold My Hand</span>
+                    </span>
+                    <span class="time-tag">♥ 44.4K</span>
+                  </div>
+                  <div class="layer-item" onclick="switchHeroVideo('./musaheetoday_analysis/videos/Top03_DbaXLO3AesH.mp4', '인스타 3위 · 여자친구 낮잠 특', 'Top 3 · Classic Girlfriend Nap Traits', 'https://www.instagram.com/reel/DbaXLO3AesH/', './assets/proposal_thumbs/top03.jpg', this)">
+                    <span>
+                      <span class="lang-kr">3위 · 여자친구 낮잠 특</span>
+                      <span class="lang-en">Top 3 · Girlfriend Nap Traits</span>
+                    </span>
+                    <span class="time-tag">♥ 39.8K</span>
+                  </div>
+                  <div class="layer-item" onclick="switchHeroVideo('./ad_crab.mp4', '브랜디드 사례 · 영덕농수산 대게딱지장', 'Branded Ad · Yeongdeok Crab Paste', 'https://www.instagram.com/musaheetoday/', './assets/proposal_thumbs/ad_crab.jpg', this)">
+                    <span>
+                      <span class="lang-kr">광고 · 영덕농수산 대게딱지장</span>
+                      <span class="lang-en">Ad · Yeongdeok Crab Paste</span>
+                    </span>
+                    <span class="time-tag">AD</span>
+                  </div>
+                  <div class="layer-item" onclick="switchHeroVideo('./ad_hellotalk.mp4', '브랜디드 사례 · 헬로우톡(HelloTalk)', 'Branded Ad · HelloTalk App Series', 'https://www.instagram.com/reel/DdtFqaGBOOO/', './assets/proposal_thumbs/ad_hellotalk.jpg', this)">
+                    <span>
+                      <span class="lang-kr">광고 · 헬로우톡(HelloTalk)</span>
+                      <span class="lang-en">Ad · HelloTalk Global App</span>
+                    </span>
+                    <span class="time-tag">AD</span>
+                  </div>
+                </div>
+                <div class="stage-helper-note">
+                  <span class="lang-kr">PDF에서는 영상 하단 [인스타 원본 보기] 클릭 시 바로 재생됩니다.</span>
+                  <span class="lang-en">In PDF, click [Watch on IG] on any card to play the original reel.</span>
+                </div>
+              </div>
+
+              <!-- Center Floating 9:16 Video Canvas -->
+              <div class="stage-center-canvas">
+                <div class="floating-reel-frame">
+                  <span class="reel-live-badge" id="heroStageBadge">
+                    <span class="lang-kr">인스타 1위 · 남친이 반격했을 때 여친 특</span>
+                    <span class="lang-en">Top 1 · My Boyfriend Hit Back Just Once</span>
+                  </span>
+                  <video id="heroStageVideo" src="./musaheetoday_analysis/videos/Top01_DbIW6BPgjsu.mp4" poster="./assets/proposal_thumbs/top01.jpg" autoplay muted loop playsinline></video>
+                  <img id="heroStagePoster" class="pdf-poster-img" src="./assets/proposal_thumbs/top01.jpg" alt="Top 1 Viral Reel" />
+                  <a id="heroStageIgLink" href="https://www.instagram.com/reel/DbIW6BPgjsu/" target="_blank" rel="noopener" class="pdf-play-link">
+                    <span class="play-dot"></span>
+                    <span class="lang-kr">인스타 원본 보기</span>
+                    <span class="lang-en">Watch on IG</span>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                  </a>
+                  <button type="button" class="reel-sound-btn" id="heroSoundBtn" onclick="toggleHeroSound()">
+                    <span class="lang-kr">소리 켜기</span>
+                    <span class="lang-en">Unmute</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right Card: Proposal Executive Summary -->
+              <div class="ui-fragment-card">
+                <div class="ui-fragment-header">
+                  <span>
+                    <span class="lang-kr">채널 핵심 지표 요약</span>
+                    <span class="lang-en">Channel Highlights</span>
+                  </span>
+                  <span class="ui-chip yellow">MEDIA KIT</span>
+                </div>
+
+                <div class="impact-highlight-box">
+                  <div class="impact-highlight-num">
+                    <span class="lang-kr">최고 400만+ 뷰</span>
+                    <span class="lang-en">4M+ Peak Views</span>
+                  </div>
+                  <div class="impact-highlight-desc">
+                    <span class="lang-kr">댓글의 90% 이상이 실제 연인·친구<br />@태그로 이어지는 자발적 바이럴 채널</span>
+                    <span class="lang-en">90%+ comments tag real partners<br />&amp; friends for organic viral reach</span>
+                  </div>
+                </div>
+
+                <div class="spec-kv-list">
+                  <div class="spec-kv">
+                    <span>
+                      <span class="lang-kr">최고 흥행작 좋아요</span>
+                      <span class="lang-en">Top Reel Likes</span>
+                    </span>
+                    <span>
+                      <span class="lang-kr">51,517개 (댓글 945개)</span>
+                      <span class="lang-en">51.5K (945 Comments)</span>
+                    </span>
+                  </div>
+                  <div class="spec-kv">
+                    <span>
+                      <span class="lang-kr">최근 평균 조회수</span>
+                      <span class="lang-en">Recent Avg. Views</span>
+                    </span>
+                    <span>
+                      <span class="lang-kr">약 200,000회+</span>
+                      <span class="lang-en">200,000+ Views</span>
+                    </span>
+                  </div>
+                  <div class="spec-kv">
+                    <span>
+                      <span class="lang-kr">핵심 구매 연령층</span>
+                      <span class="lang-en">Core Age (25–44)</span>
+                    </span>
+                    <span>
+                      <span class="lang-kr">25–44세 (82.0%)</span>
+                      <span class="lang-en">82.0% Core Demo</span>
+                    </span>
+                  </div>
+                  <div class="spec-kv">
+                    <span>
+                      <span class="lang-kr">성별 타깃 비율</span>
+                      <span class="lang-en">Gender Split</span>
+                    </span>
+                    <span>
+                      <span class="lang-kr">여성 54.3% · 남성 45.7%</span>
+                      <span class="lang-en">54.3% F · 45.7% M</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         EXECUTED BRAND COLLABORATION TRACK RECORD
+         ====================================================================== -->
+    <section class="trust-section">
+      <div class="container">
+        <div class="trust-headline-rule">
+          <span class="lang-kr"><strong>실제 집행 브랜디드 레퍼런스</strong> — 글로벌 앱부터 F&amp;B 식품까지 검증된 캠페인</span>
+          <span class="lang-en"><strong>Executed Brand Campaigns</strong> — Proven Performance Across Global Apps &amp; F&amp;B Brands</span>
+        </div>
+        <div class="partner-pill-row">
+          <div class="partner-item">
+            <span class="lang-kr">헬로우톡 (HelloTalk)</span>
+            <span class="lang-en">HelloTalk (Global App)</span>
+            <span class="partner-cat">
+              <span class="lang-kr">글로벌 언어교환 앱 시리즈 브랜디드 릴스</span>
+              <span class="lang-en">Branded Short-Form Animation Series (EP1 &amp; EP2)</span>
+            </span>
+          </div>
+          <div class="partner-item">
+            <span class="lang-kr">영덕농수산 (대게딱지장)</span>
+            <span class="lang-en">Yeongdeok Fishery (F&amp;B)</span>
+            <span class="partner-cat">
+              <span class="lang-kr">대게딱지장 브랜디드 릴스 · 유료협업 피드 · 메타 광고 소재</span>
+              <span class="lang-en">Branded Reel · Paid Feed Post · Meta Performance Ad Creative</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PART 01. PORTFOLIO SHOWCASE (Actual IG Top 6 Hits + 3 Branded Cases)
+         ====================================================================== -->
+    <section class="showcase-section" id="showcase">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">
+            <span class="badge-dot"></span>
+            <span class="lang-kr">PART 01 · 실제 흥행 릴스 &amp; 브랜디드 사례</span>
+            <span class="lang-en">PART 01 · Top Viral Reels &amp; Branded Case Studies</span>
+          </span>
+          <h2 class="section-h2">
+            <span class="lang-kr"><span class="desktop-line">데이터로 증명된 실제 바이럴 레퍼런스.</span></span>
+            <span class="lang-en"><span class="desktop-line">Proven Viral Hits &amp; Branded Campaigns.</span></span>
+          </h2>
+          <p class="section-desc">
+            <span class="lang-kr"><span class="desktop-line">인스타그램에서 실제로 수만 개의 좋아요와 수백만 조회수를 기록한 TOP 6 에피소드와 브랜디드 광고 사례입니다.</span></span>
+            <span class="lang-en"><span class="desktop-line">Explore our top 6 highest-performing Instagram Reels and executed branded campaigns—click any button to view on Instagram.</span></span>
+          </p>
+
+          <!-- Filter Buttons -->
+          <div class="filter-bar no-print" role="tablist">
+            <button class="filter-pill active" onclick="filterPortfolio('all', this)">
+              <span class="lang-kr">전체 레퍼런스 (9)</span>
+              <span class="lang-en">All References (9)</span>
+            </button>
+            <button class="filter-pill" onclick="filterPortfolio('reels', this)">
+              <span class="lang-kr">인스타 실제 흥행 TOP 6 (6)</span>
+              <span class="lang-en">Top 6 Viral Reels (6)</span>
+            </button>
+            <button class="filter-pill" onclick="filterPortfolio('branded', this)">
+              <span class="lang-kr">브랜디드 광고 · 피드 사례 (3)</span>
+              <span class="lang-en">Branded Ads &amp; Feed (3)</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="portfolio-grid" id="portfolioGrid">
+
+          <!-- TOP 1: DbIW6BPgjsu (Likes: 51,517 / Comments: 945) -->
+          <article class="j-portfolio-card is-reels" data-category="reels" onclick="openVideoModal('Top 1 — 남친이 반격했을 때 여친 특 (♥ 51,517 · 댓글 945)', './musaheetoday_analysis/videos/Top01_DbIW6BPgjsu.mp4', 'https://www.instagram.com/reel/DbIW6BPgjsu/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">좋아요 51,517 · 댓글 945</span>
+                <span class="lang-en">51,517 Likes · 945 Comments</span>
+              </span>
+              <span class="j-card-ig-chip">
+                <span class="lang-kr">연인 @태그 93%</span>
+                <span class="lang-en">93% @Tags</span>
+              </span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">사운드 켜고 재생</span>
+              <span class="lang-en">Play with Sound</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./musaheetoday_analysis/videos/Top01_DbIW6BPgjsu.mp4" poster="./assets/proposal_thumbs/top01.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/top01.jpg" alt="Top 1 Reel" />
+                <a href="https://www.instagram.com/reel/DbIW6BPgjsu/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 원본 영상 재생</span>
+                  <span class="lang-en">Watch on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">TOP 1</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">남친이 반격했을 때 여친 특</span>
+                    <span class="lang-en">Boyfriend Hit Back Just Once</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">채널 최고 히트작 · 장난 후 엄살 반전 공감</span>
+                    <span class="lang-en">All-Time #1 Hit · Playful Couple Twist</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag">♥ 51.5K</span>
+            </div>
+          </article>
+
+          <!-- TOP 2: DdqBKBQTqaD (Likes: 44,426 / Comments: 133) -->
+          <article class="j-portfolio-card is-reels" data-category="reels" onclick="openVideoModal('Top 2 — 여친이 손 안 잡아줄 때 (♥ 44,426 · 댓글 133)', './musaheetoday_analysis/videos/Top02_DdqBKBQTqaD.mp4', 'https://www.instagram.com/reel/DdqBKBQTqaD/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">좋아요 44,426 · 댓글 133</span>
+                <span class="lang-en">44,426 Likes · 133 Comments</span>
+              </span>
+              <span class="j-card-ig-chip">
+                <span class="lang-kr">글로벌 밈 폭발</span>
+                <span class="lang-en">Global Meme</span>
+              </span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">사운드 켜고 재생</span>
+              <span class="lang-en">Play with Sound</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./musaheetoday_analysis/videos/Top02_DdqBKBQTqaD.mp4" poster="./assets/proposal_thumbs/top02.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/top02.jpg" alt="Top 2 Reel" />
+                <a href="https://www.instagram.com/reel/DdqBKBQTqaD/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 원본 영상 재생</span>
+                  <span class="lang-en">Watch on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">TOP 2</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">여친이 손 안 잡아줄 때</span>
+                    <span class="lang-en">When She Won't Hold My Hand</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">대사 없이 표정·눈물 연기로 터진 글로벌 히트작</span>
+                    <span class="lang-en">Non-Verbal Emotional Comedy · Global Reach</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag">♥ 44.4K</span>
+            </div>
+          </article>
+
+          <!-- TOP 3: DbaXLO3AesH (Likes: 39,766 / Comments: 230) -->
+          <article class="j-portfolio-card is-reels" data-category="reels" onclick="openVideoModal('Top 3 — 여자친구 낮잠 특 (♥ 39,766 · 댓글 230)', './musaheetoday_analysis/videos/Top03_DbaXLO3AesH.mp4', 'https://www.instagram.com/reel/DbaXLO3AesH/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">좋아요 39,766 · 댓글 230</span>
+                <span class="lang-en">39,766 Likes · 230 Comments</span>
+              </span>
+              <span class="j-card-ig-chip">
+                <span class="lang-kr">연인 @태그 93%</span>
+                <span class="lang-en">93% @Tags</span>
+              </span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">사운드 켜고 재생</span>
+              <span class="lang-en">Play with Sound</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./musaheetoday_analysis/videos/Top03_DbaXLO3AesH.mp4" poster="./assets/proposal_thumbs/top03.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/top03.jpg" alt="Top 3 Reel" />
+                <a href="https://www.instagram.com/reel/DbaXLO3AesH/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 원본 영상 재생</span>
+                  <span class="lang-en">Watch on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">TOP 3</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">여자친구 낮잠 특</span>
+                    <span class="lang-en">Classic Girlfriend Nap Traits</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">'30분 뒤 깨워줘 → 6시간 반 숙면' 현실 커플 공감</span>
+                    <span class="lang-en">"Wake me in 30m" → Sleeps 6.5 Hours</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag">♥ 39.8K</span>
+            </div>
+          </article>
+
+          <!-- TOP 4: Dcx7n7_A0tf (Likes: 33,886 / Comments: 299) -->
+          <article class="j-portfolio-card is-reels" data-category="reels" onclick="openVideoModal('Top 4 — 남자친구 잠버릇 특 (♥ 33,886 · 댓글 299)', './musaheetoday_analysis/videos/Top04_Dcx7n7_A0tf.mp4', 'https://www.instagram.com/reel/Dcx7n7_A0tf/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">좋아요 33,886 · 댓글 299</span>
+                <span class="lang-en">33,886 Likes · 299 Comments</span>
+              </span>
+              <span class="j-card-ig-chip">
+                <span class="lang-kr">연인 @태그 86%</span>
+                <span class="lang-en">86% @Tags</span>
+              </span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">사운드 켜고 재생</span>
+              <span class="lang-en">Play with Sound</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./musaheetoday_analysis/videos/Top04_Dcx7n7_A0tf.mp4" poster="./assets/proposal_thumbs/top04.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/top04.jpg" alt="Top 4 Reel" />
+                <a href="https://www.instagram.com/reel/Dcx7n7_A0tf/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 원본 영상 재생</span>
+                  <span class="lang-en">Watch on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">TOP 4</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">남자친구 잠버릇 특</span>
+                    <span class="lang-en">Boyfriend's Sleeping Habits</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">자면서 헤드락 거는 남친 · 6배 체격차 슬랩스틱</span>
+                    <span class="lang-en">Accidental Bear Headlock · 6x Size Gap Comedy</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag">♥ 33.9K</span>
+            </div>
+          </article>
+
+          <!-- TOP 5: DdGhaJfAFtw (Likes: 21,922 / Comments: 137) -->
+          <article class="j-portfolio-card is-reels" data-category="reels" onclick="openVideoModal('Top 5 — 여친을 자꾸 재우는 이유 (♥ 21,922 · 댓글 137)', './musaheetoday_analysis/videos/Top05_DdGhaJfAFtw.mp4', 'https://www.instagram.com/reel/DdGhaJfAFtw/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">좋아요 21,922 · 댓글 137</span>
+                <span class="lang-en">21,922 Likes · 137 Comments</span>
+              </span>
+              <span class="j-card-ig-chip">
+                <span class="lang-kr">연인 @태그 93%</span>
+                <span class="lang-en">93% @Tags</span>
+              </span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">사운드 켜고 재생</span>
+              <span class="lang-en">Play with Sound</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./musaheetoday_analysis/videos/Top05_DdGhaJfAFtw.mp4" poster="./assets/proposal_thumbs/top05.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/top05.jpg" alt="Top 5 Reel" />
+                <a href="https://www.instagram.com/reel/DdGhaJfAFtw/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 원본 영상 재생</span>
+                  <span class="lang-en">Watch on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">TOP 5</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">여친을 자꾸 재우는 이유</span>
+                    <span class="lang-en">Why He Puts Her to Sleep</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">여친 재우고 몰래 새벽 게임하다 걸리는 반전 서사</span>
+                    <span class="lang-en">Sneaking Out for Late-Night Gaming Twist</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag">♥ 21.9K</span>
+            </div>
+          </article>
+
+          <!-- TOP 6: DeeBDtNA3xL (Likes: 21,897 / Comments: 253) -->
+          <article class="j-portfolio-card is-reels" data-category="reels" onclick="openVideoModal('Top 6 — 이해 안 가는 여친 행동 (♥ 21,897 · 댓글 253)', './musaheetoday_analysis/videos/Top06_DeeBDtNA3xL.mp4', 'https://www.instagram.com/reel/DeeBDtNA3xL/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">좋아요 21,897 · 댓글 253</span>
+                <span class="lang-en">21,897 Likes · 253 Comments</span>
+              </span>
+              <span class="j-card-ig-chip">
+                <span class="lang-kr">댓글 토론 폭발</span>
+                <span class="lang-en">Viral Debate</span>
+              </span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">사운드 켜고 재생</span>
+              <span class="lang-en">Play with Sound</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./musaheetoday_analysis/videos/Top06_DeeBDtNA3xL.mp4" poster="./assets/proposal_thumbs/top06.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/top06.jpg" alt="Top 6 Reel" />
+                <a href="https://www.instagram.com/reel/DeeBDtNA3xL/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 원본 영상 재생</span>
+                  <span class="lang-en">Watch on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">TOP 6</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">이해 안 가는 여친 행동</span>
+                    <span class="lang-en">Girlfriend Logic I Don't Get</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">소품샵 데이트 '귀엽다 → 사줄까? → 됐어' 심리 공감</span>
+                    <span class="lang-en">Shopping Date Psychology · High Comment Rate</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag">♥ 21.9K</span>
+            </div>
+          </article>
+
+          <!-- BRANDED AD 1: Yeongdeok Nongsusan -->
+          <article class="j-portfolio-card is-reels" data-category="branded" onclick="openVideoModal('Branded Ad — 영덕농수산 대게딱지장 (연애하면 살찌는 이유)', './ad_crab.mp4', 'https://www.instagram.com/musaheetoday/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill is-ad">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">실제 집행 · F&amp;B 식품 광고</span>
+                <span class="lang-en">Executed · F&amp;B Branded Reel</span>
+              </span>
+              <span class="j-card-ig-chip">
+                <span class="lang-kr">영덕농수산</span>
+                <span class="lang-en">Yeongdeok F&amp;B</span>
+              </span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">사운드 켜고 재생</span>
+              <span class="lang-en">Play with Sound</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./ad_crab.mp4" poster="./assets/proposal_thumbs/ad_crab.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/ad_crab.jpg" alt="Yeongdeok Crab Paste Branded Reel" />
+                <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 채널에서 보기</span>
+                  <span class="lang-en">View on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">AD</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">영덕농수산 대게딱지장</span>
+                    <span class="lang-en">Yeongdeok Crab Paste</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">'연애하면 살찌는 이유' 커플 먹방 브랜디드 릴스</span>
+                    <span class="lang-en">"Why Couples Gain Weight" F&amp;B Storytelling Ad</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag" style="background:var(--color-accent-lilac-soft);">
+                <span class="lang-kr">브랜디드</span>
+                <span class="lang-en">Branded</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- BRANDED AD 2: HelloTalk -->
+          <article class="j-portfolio-card is-reels" data-category="branded" onclick="openVideoModal('Branded Ad — 헬로우톡(HelloTalk) 절친의 남자친구', './ad_hellotalk.mp4', 'https://www.instagram.com/reel/DdtFqaGBOOO/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill is-ad">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">실제 집행 · 글로벌 앱 광고</span>
+                <span class="lang-en">Executed · Global App Ad</span>
+              </span>
+              <span class="j-card-ig-chip">HelloTalk</span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">사운드 켜고 재생</span>
+              <span class="lang-en">Play with Sound</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./ad_hellotalk.mp4" poster="./assets/proposal_thumbs/ad_hellotalk.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/ad_hellotalk.jpg" alt="HelloTalk Branded Reel" />
+                <a href="https://www.instagram.com/reel/DdtFqaGBOOO/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 원본 영상 재생</span>
+                  <span class="lang-en">Watch on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">AD</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">헬로우톡 (HelloTalk)</span>
+                    <span class="lang-en">HelloTalk Global App</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">'절친의 남자친구' 글로벌 언어교환 앱 시리즈 광고</span>
+                    <span class="lang-en">"My Bestie's Boyfriend" App Integration Series</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag" style="background:var(--color-accent-lilac-soft);">
+                <span class="lang-kr">브랜디드</span>
+                <span class="lang-en">Branded</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- BRANDED AD 3: 4:5 Feed Format -->
+          <article class="j-portfolio-card is-portrait" data-category="branded" onclick="openVideoModal('Branded Format — 4:5 인스타 말풍선 피드툰', './ad_feed.mp4', 'https://www.instagram.com/musaheetoday/')">
+            <div class="j-card-top-bar">
+              <span class="j-card-stat-pill is-ad">
+                <span class="stat-dot"></span>
+                <span class="lang-kr">피드형 · 저장 및 공유 특화</span>
+                <span class="lang-en">Feed Format · High Save Rate</span>
+              </span>
+              <span class="j-card-ig-chip">4:5 Feed</span>
+            </div>
+            <div class="j-card-scrim"></div>
+            <span class="j-card-hover-btn">
+              <span class="lang-kr">피드 포맷 크게 보기</span>
+              <span class="lang-en">Preview Feed Format</span>
+              <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+            </span>
+            <div class="j-card-holder">
+              <div class="j-card-media">
+                <video src="./ad_feed.mp4" poster="./assets/proposal_thumbs/ad_feed.jpg" autoplay muted loop playsinline></video>
+                <img class="pdf-poster-img" src="./assets/proposal_thumbs/ad_feed.jpg" alt="4:5 Instagram Feed Format" />
+                <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="pdf-play-link" onclick="event.stopPropagation()">
+                  <span class="play-dot"></span>
+                  <span class="lang-kr">인스타 채널에서 보기</span>
+                  <span class="lang-en">View on Instagram</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="j-card-bottom">
+              <div class="j-card-meta-left">
+                <div class="j-card-badge-num">4:5</div>
+                <div>
+                  <h3 class="j-card-title">
+                    <span class="lang-kr">인스타 말풍선 피드툰</span>
+                    <span class="lang-en">4:5 Speech-Bubble Feed</span>
+                  </h3>
+                  <p class="j-card-subtitle">
+                    <span class="lang-kr">제품 특장점을 한눈에 전달하는 4:5 피드 광고 포맷</span>
+                    <span class="lang-en">High-Save 4:5 Comic Format for Product Highlights</span>
+                  </p>
+                </div>
+              </div>
+              <span class="j-card-tag">4:5 Feed</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PART 02. CHARACTER IP INTRODUCTION (Cleaned Turnaround Sheets)
+         ====================================================================== -->
+    <section class="bento-section" id="characters">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">
+            <span class="badge-dot"></span>
+            <span class="lang-kr">PART 02 · 캐릭터 IP 소개</span>
+            <span class="lang-en">PART 02 · Character IP Universe</span>
+          </span>
+          <h2 class="section-h2">
+            <span class="lang-kr"><span class="desktop-line">누가 봐도 한눈에 기억되는 두 주인공.</span></span>
+            <span class="lang-en"><span class="desktop-line">Two Unforgettable Plush Protagonists.</span></span>
+          </h2>
+          <p class="section-desc">
+            <span class="lang-kr"><span class="desktop-line">6배에 달하는 앙증맞은 체격 차이와 보송보송한 실사 인형 질감으로, 어떤 제품과 함께 있어도 시선을 사로잡습니다.</span></span>
+            <span class="lang-en"><span class="desktop-line">With an iconic 6x size difference and tactile photorealistic plush textures, Musahee and Deundeun-i make any product stand out.</span></span>
+          </p>
+        </div>
+
+        <div class="bento-grid-2">
+          <!-- Musahee Card -->
+          <div class="section-panel">
+            <div class="panel-copy">
+              <span class="panel-eyebrow">
+                <span class="lang-kr">CHARACTER 01 · 사랑스러운 주인공</span>
+                <span class="lang-en">CHARACTER 01 · EXPRESSIVE HEROINE</span>
+              </span>
+              <h3 class="panel-h3">
+                <span class="lang-kr">무사히 (Musahee)</span>
+                <span class="lang-en">Musahee (20cm Plush Rabbit)</span>
+              </h3>
+              <p class="panel-desc">
+                <span class="lang-kr">
+                  <span class="desktop-line">솔직하고 표현력 풍부한 20cm 크림화이트 토끼 캐릭터입니다.</span><br />
+                  <span class="desktop-line">맛있는 음식과 새 아이템 앞에서의 리액션으로 소비자의 <b>'갖고 싶고 먹고 싶은 마음'</b>을 대변합니다.</span>
+                </span>
+                <span class="lang-en">
+                  <span class="desktop-line">An expressive 20cm cream-white rabbit wearing her signature pink frilly headband.</span><br />
+                  <span class="desktop-line">Her honest reactions to food, beauty, and apps mirror <b>every consumer's real desires</b>.</span>
+                </span>
+              </p>
+            </div>
+            <div class="product-mockup-card">
+              <img src="./assets/proposal_thumbs/musahee_sheet_clean.jpg" alt="Musahee Turnaround Sheet" />
+            </div>
+            <div class="rule-pills">
+              <span class="rule-pill"><span class="lang-kr">#식품·디저트·간편식</span><span class="lang-en">#Food &amp; Beverage</span></span>
+              <span class="rule-pill"><span class="lang-kr">#뷰티·패션·잡화</span><span class="lang-en">#Beauty &amp; Fashion</span></span>
+              <span class="rule-pill"><span class="lang-kr">#모바일앱·플랫폼</span><span class="lang-en">#Mobile Apps &amp; SaaS</span></span>
+              <span class="rule-pill"><span class="lang-kr">#캐릭터굿즈·콜라보</span><span class="lang-en">#IP Merch &amp; Collabs</span></span>
+            </div>
+          </div>
+
+          <!-- Deundeun-i Card -->
+          <div class="section-panel">
+            <div class="panel-copy">
+              <span class="panel-eyebrow">
+                <span class="lang-kr">CHARACTER 02 · 듬직한 파트너</span>
+                <span class="lang-en">CHARACTER 02 · GENTLE GIANT PARTNER</span>
+              </span>
+              <h3 class="panel-h3">
+                <span class="lang-kr">든든이 (Deundeun-i)</span>
+                <span class="lang-en">Deundeun-i (6x Giant Brown Bear)</span>
+              </h3>
+              <p class="panel-desc">
+                <span class="lang-kr">
+                  <span class="desktop-line">무사히보다 6배나 거대하지만 언제나 다정하게 챙겨주는 갈색 곰입니다.</span><br />
+                  <span class="desktop-line">묵직한 존재감과 반전 귀여움으로 <b>브랜드의 든든한 혜택과 신뢰감</b>을 유쾌하게 전달합니다.</span>
+                </span>
+                <span class="lang-en">
+                  <span class="desktop-line">A warm-hearted caramel-brown bear who is 6x larger than Musahee.</span><br />
+                  <span class="desktop-line">His comforting presence and gentle humor deliver <b>brand trust and key benefits</b> effortlessly.</span>
+                </span>
+              </p>
+            </div>
+            <div class="product-mockup-card">
+              <img src="./assets/proposal_thumbs/dundeuni_sheet_clean.jpg" alt="Deundeun-i Turnaround Sheet" />
+            </div>
+            <div class="rule-pills">
+              <span class="rule-pill"><span class="lang-kr">#배달·커머스·쇼핑</span><span class="lang-en">#Delivery &amp; E-Commerce</span></span>
+              <span class="rule-pill"><span class="lang-kr">#가전·라이프스타일</span><span class="lang-en">#Home &amp; Lifestyle</span></span>
+              <span class="rule-pill"><span class="lang-kr">#금융·혜택·프로모션</span><span class="lang-en">#Fintech &amp; Promotions</span></span>
+              <span class="rule-pill"><span class="lang-kr">#커플·기념일·선물</span><span class="lang-en">#Couples &amp; Gifting</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PART 03 & 04. METRICS, WORKFLOW & COLLABORATION RATE CARD
+         ====================================================================== -->
+    <section class="bento-section" id="impact">
+      <div class="container">
+        <div class="section-header">
+          <span class="pill-tag">
+            <span class="badge-dot"></span>
+            <span class="lang-kr">PART 03 · 채널 오디언스 지표 &amp; 단가 안내</span>
+            <span class="lang-en">PART 03 · Audience Demographics &amp; Rate Card</span>
+          </span>
+          <h2 class="section-h2">
+            <span class="lang-kr"><span class="desktop-line">검증된 도달력, 명확한 제작 프로세스.</span></span>
+            <span class="lang-en"><span class="desktop-line">Verified Reach, Seamless Production.</span></span>
+          </h2>
+          <p class="section-desc">
+            <span class="lang-kr"><span class="desktop-line">실제 구매력이 가장 높은 25–44세 남녀 타깃에게 브랜드 메시지를 가장 친근하게 도달시킵니다.</span></span>
+            <span class="lang-en"><span class="desktop-line">Delivering high-converting branded entertainment to the core 25–44 purchasing demographic across Korea and global markets.</span></span>
+          </p>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-value">
+              <span class="lang-kr">400만+</span>
+              <span class="lang-en">4.0M+</span>
+            </div>
+            <div class="metric-label">
+              <span class="lang-kr">단일 릴스 최고 조회수</span>
+              <span class="lang-en">Peak Single Reel Views</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">
+              <span class="lang-kr">20만+</span>
+              <span class="lang-en">200K+</span>
+            </div>
+            <div class="metric-label">
+              <span class="lang-kr">최근 게시물 평균 조회수</span>
+              <span class="lang-en">Average Reel Views</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">82.0%</div>
+            <div class="metric-label">
+              <span class="lang-kr">25–44세 핵심 구매층 비중</span>
+              <span class="lang-en">Core 25–44 Age Demographic</span>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">90%+</div>
+            <div class="metric-label">
+              <span class="lang-kr">히트작 댓글 @연인태그 비율</span>
+              <span class="lang-en">Organic @Friend Tag Ratio</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Step Collaboration Workflow -->
+        <div class="process-grid">
+          <div class="process-card">
+            <span class="process-step-badge">STEP 01</span>
+            <h3 class="process-title">
+              <span class="lang-kr">문의 및 일정 조율</span>
+              <span class="lang-en">Brief &amp; Schedule</span>
+            </h3>
+            <p class="process-desc">
+              <span class="lang-kr">제품·서비스의 핵심 소구점과<br />희망 업로드 일정을 확인합니다.</span>
+              <span class="lang-en">Align on key product highlights,<br />campaign goals, and target dates.</span>
+            </p>
+          </div>
+          <div class="process-card">
+            <span class="process-step-badge">STEP 02</span>
+            <h3 class="process-title">
+              <span class="lang-kr">맞춤 기획안 제안</span>
+              <span class="lang-en">Custom Storyboard</span>
+            </h3>
+            <p class="process-desc">
+              <span class="lang-kr">브랜드 소구점이 자연스럽게 녹아든<br />공감 스토리보드를 제안합니다.</span>
+              <span class="lang-en">We craft a relatable couple comedy<br />script tailored to your brand.</span>
+            </p>
+          </div>
+          <div class="process-card">
+            <span class="process-step-badge">STEP 03</span>
+            <h3 class="process-title">
+              <span class="lang-kr">본편 제작 및 시사</span>
+              <span class="lang-en">Production &amp; Review</span>
+            </h3>
+            <p class="process-desc">
+              <span class="lang-kr">고화질 영상·사운드·자막 편집본을<br />시사 후 피드백을 반영합니다.</span>
+              <span class="lang-en">Full animation, sound design, and<br />KR/EN subtitles delivered for review.</span>
+            </p>
+          </div>
+          <div class="process-card">
+            <span class="process-step-badge">STEP 04</span>
+            <h3 class="process-title">
+              <span class="lang-kr">업로드 및 2차 활용</span>
+              <span class="lang-en">Launch &amp; Ad Usage</span>
+            </h3>
+            <p class="process-desc">
+              <span class="lang-kr">공식 채널 업로드 및 퍼포먼스<br />마케팅 소재로 2차 활용합니다.</span>
+              <span class="lang-en">Published on @musaheetoday with<br />optional paid-social usage rights.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Dark Collaboration Rate Card -->
+        <div class="dark-collab-panel" id="collab">
+          <div class="panel-copy">
+            <span class="panel-eyebrow" style="color: var(--color-accent-lilac-soft);">PART 04 · AD PACKAGES &amp; PRICING</span>
+            <h3 class="panel-h3">
+              <span class="lang-kr">
+                <span class="desktop-line">브랜드의 매력을</span><br />
+                <span class="desktop-line">무사히의 일상 속으로.</span>
+              </span>
+              <span class="lang-en">
+                <span class="desktop-line">Bring Your Brand Into</span><br />
+                <span class="desktop-line">Musahee's Everyday World.</span>
+              </span>
+            </h3>
+            <p class="panel-desc" style="margin-top: 0.8rem;">
+              <span class="lang-kr">
+                <span class="desktop-line">소비자가 스스로 공유하고 댓글로 친구를 소환하는 브랜디드 숏폼을 제작합니다.</span><br />
+                <span class="desktop-line">다회차 시리즈 진행이나 패키지 구성 시 맞춤 예산 협의가 가능합니다.</span>
+              </span>
+              <span class="lang-en">
+                <span class="desktop-line">We create native short-form stories that audiences actively share and tag friends in.</span><br />
+                <span class="desktop-line">Custom bundle discounts are available for multi-episode series partnerships.</span>
+              </span>
+            </p>
+            <div style="margin-top: 2.0rem; display:flex; gap:1.2rem; flex-wrap:wrap;">
+              <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-lilac">
+                <span class="j-btn-inner">
+                  <span class="lang-kr">인스타그램 DM 문의하기</span>
+                  <span class="lang-en">Inquire via Instagram DM</span>
+                  <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+                </span>
+              </a>
+              <button type="button" class="j-btn j-btn-white no-print" onclick="openContactGuide()">
+                <span class="j-btn-inner">
+                  <span class="lang-kr">채널 주소 복사</span>
+                  <span class="lang-en">Copy Channel Link</span>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div class="rate-list">
+            <div class="rate-row">
+              <span>
+                <span class="lang-kr">브랜디드 릴스 1편 (기획 · 제작 · 업로드 포함)</span>
+                <span class="lang-en">1x Branded Reel (Script, Production &amp; Upload)</span>
+              </span>
+              <span class="rate-price">
+                <span class="lang-kr">100만원<span class="rate-vat">(VAT 별도)</span></span>
+                <span class="lang-en">KRW 1,000,000<span class="rate-vat">(~USD 720)</span></span>
+              </span>
+            </div>
+            <div class="rate-row">
+              <span>
+                <span class="lang-kr">2차 활용권 (자사몰 · 메타 광고 소재 활용)</span>
+                <span class="lang-en">Secondary Paid Ad / Website Usage Rights</span>
+              </span>
+              <span class="rate-price">
+                <span class="lang-kr">+50만원</span>
+                <span class="lang-en">+KRW 500,000<span class="rate-vat">(~USD 360)</span></span>
+              </span>
+            </div>
+            <div class="rate-row">
+              <span>
+                <span class="lang-kr">브랜드 계정 공동작업자 게시</span>
+                <span class="lang-en">Instagram Collaborator Tagging</span>
+              </span>
+              <span class="rate-price">
+                <span class="lang-kr">+30만원</span>
+                <span class="lang-en">+KRW 300,000<span class="rate-vat">(~USD 220)</span></span>
+              </span>
+            </div>
+            <div class="rate-row">
+              <span>
+                <span class="lang-kr">프로필 상단 구매 · 이벤트 링크 게재</span>
+                <span class="lang-en">Profile Bio Link Placement</span>
+              </span>
+              <span class="rate-price">
+                <span class="lang-kr">+30만원</span>
+                <span class="lang-en">+KRW 300,000<span class="rate-vat">(~USD 220)</span></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       PROPOSAL CLOSING CONTACT CURTAIN
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-curtain-inner">
+      <div class="container">
+        <div class="footer-top-cta">
+          <span class="pill-tag" style="background: var(--color-canvas);">
+            <span class="badge-dot"></span>
+            <span class="lang-kr">CONTACT · 오늘도 무사히 (Musahee Team)</span>
+            <span class="lang-en">CONTACT · Musahee Team (@musaheetoday)</span>
+          </span>
+          <h2 class="footer-display-title">
+            <span class="lang-kr">
+              <span class="desktop-line">오늘도 무사히와 함께</span><br />
+              <span class="desktop-line">브랜드 스토리를 만들어 보세요.</span>
+            </span>
+            <span class="lang-en">
+              <span class="desktop-line">Let's Create Unforgettable</span><br />
+              <span class="desktop-line">Brand Stories with Musahee.</span>
+            </span>
+          </h2>
+          <p class="footer-subtext">
+            <span class="lang-kr"><span class="desktop-line">브랜디드 릴스, 인스타 피드툰, 캐릭터 콜라보레이션 문의를 언제나 환영합니다.</span></span>
+            <span class="lang-en"><span class="desktop-line">We welcome inquiries for branded Reels, 4:5 feed comics, and global IP collaborations.</span></span>
+          </p>
+          <div style="display:flex; gap:1.2rem; flex-wrap:wrap; justify-content:center; margin-top: 0.6rem;">
+            <a href="https://www.instagram.com/musaheetoday/" target="_blank" rel="noopener" class="j-btn j-btn-black j-btn-lg">
+              <span class="j-btn-inner">
+                <span class="lang-kr">@musaheetoday DM으로 문의하기</span>
+                <span class="lang-en">Contact via Instagram @musaheetoday</span>
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+              </span>
+            </a>
+            <a href="https://www.youtube.com/@musahee_today" target="_blank" rel="noopener" class="j-btn j-btn-lilac j-btn-lg">
+              <span class="j-btn-inner">
+                <span class="lang-kr">유튜브 쇼츠 @musahee_today</span>
+                <span class="lang-en">YouTube Shorts @musahee_today</span>
+                <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-under-floor">
+      <div class="container footer-under-row">
+        <span>© 2026 오늘도 무사히 (Musahee Team) · Official Brand Collaboration Proposal &amp; Media Kit</span>
+        <span>Instagram @musaheetoday · YouTube @musahee_today</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       VIDEO / IMAGE LIGHTBOX MODAL
+       ======================================================================== -->
+  <div class="video-modal-backdrop" id="mediaModal" onclick="closeMediaModal(event)">
+    <div class="video-modal-card" onclick="event.stopPropagation()">
+      <div class="video-modal-header">
+        <h3 class="video-modal-title" id="modalTitle">Preview</h3>
+        <button class="modal-close-btn" onclick="closeMediaModal()" aria-label="Close">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="copy-toast" id="copyToast">
+    <span class="lang-kr">인스타그램 @musaheetoday 링크가 복사되었습니다. DM으로 편하게 문의해 주세요!</span>
+    <span class="lang-en">Copied @musaheetoday Instagram link! Feel free to reach out via DM.</span>
+  </div>
+
+  <script>
+    // 1. Language Switcher (Supports ?lang=en or ?lang=kr and button clicks)
+    function setLanguage(lang) {
+      const normalized = (lang === 'en') ? 'en' : 'kr';
+      document.documentElement.setAttribute('data-lang', normalized);
+      document.documentElement.setAttribute('lang', normalized === 'en' ? 'en' : 'ko');
+
+      const btnKr = document.getElementById('btnLangKr');
+      const btnEn = document.getElementById('btnLangEn');
+      if (btnKr && btnEn) {
+        btnKr.classList.toggle('active', normalized === 'kr');
+        btnEn.classList.toggle('active', normalized === 'en');
+      }
+
+      const navPdfBtn = document.getElementById('navPdfBtn');
+      if (navPdfBtn) {
+        if (normalized === 'en') {
+          navPdfBtn.setAttribute('href', './Musahee_MediaKit_Proposal_EN.pdf');
+          navPdfBtn.setAttribute('download', 'Musahee_MediaKit_Proposal_EN.pdf');
+        } else {
+          navPdfBtn.setAttribute('href', './오늘도무사히_광고제안서_2026.pdf');
+          navPdfBtn.setAttribute('download', '오늘도무사히_광고제안서_2026.pdf');
+        }
+      }
+    }
+
+    (function initLangFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('lang') === 'en') {
+        setLanguage('en');
+      } else {
+        setLanguage('kr');
+      }
+    })();
+
+    // 2. Force Video Autoplay
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('video').forEach(v => {
+        v.muted = true;
+        v.setAttribute('muted', '');
+        v.setAttribute('playsinline', '');
+        const p = v.play();
+        if (p !== undefined) {
+          p.catch(() => {});
+        }
+      });
+    });
+
+    // 3. Hero Stage Video Switcher & Sound Toggle
+    function switchHeroVideo(src, labelKr, labelEn, igUrl, posterSrc, clickedEl) {
+      const video = document.getElementById('heroStageVideo');
+      const badge = document.getElementById('heroStageBadge');
+      const igLink = document.getElementById('heroStageIgLink');
+      const posterImg = document.getElementById('heroStagePoster');
+      video.src = src;
+      if (posterSrc) {
+        video.poster = posterSrc;
+        if (posterImg) posterImg.src = posterSrc;
+      }
+      if (igUrl && igLink) {
+        igLink.href = igUrl;
+      }
+      video.play();
+      badge.innerHTML = `<span class="lang-kr">${labelKr}</span><span class="lang-en">${labelEn}</span>`;
+
+      document.querySelectorAll('.layer-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      if (clickedEl) clickedEl.classList.add('active');
+    }
+
+    function toggleHeroSound() {
+      const video = document.getElementById('heroStageVideo');
+      const btn = document.getElementById('heroSoundBtn');
+      video.muted = !video.muted;
+      btn.innerHTML = video.muted
+        ? '<span class="lang-kr">소리 켜기</span><span class="lang-en">Unmute</span>'
+        : '<span class="lang-kr">소리 끄기</span><span class="lang-en">Mute</span>';
+    }
+
+    // 4. Portfolio Category Filter
+    function filterPortfolio(category, btnEl) {
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      document.querySelectorAll('.j-portfolio-card').forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (category === 'all' || cat === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 5. Lightbox Modal for Video & Stills
+    function openVideoModal(title, videoSrc, igUrl) {
+      const modal = document.getElementById('mediaModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+      modalTitle.textContent = title;
+      const igButtonHtml = igUrl
+        ? `<div style="margin-top: 1.2rem; display: flex; justify-content: flex-end;">
+             <a href="${igUrl}" target="_blank" rel="noopener" class="j-btn j-btn-gray j-btn-sm">
+               <span class="j-btn-inner">
+                 <span class="lang-kr">인스타그램 원본 게시물 보기</span>
+                 <span class="lang-en">Open Original Reel on Instagram</span>
+                 <svg class="icon-svg" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H8M17 7V16"/></svg>
+               </span>
+             </a>
+           </div>`
+        : '';
+      modalBody.innerHTML = `<video class="video-modal-player" src="${videoSrc}" controls autoplay playsinline></video>${igButtonHtml}`;
+      modal.classList.add('is-open');
+    }
+
+    function openImageModal(title, imgSrc) {
+      const modal = document.getElementById('mediaModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+      modalTitle.textContent = title;
+      modalBody.innerHTML = `<img src="${imgSrc}" style="width:100%; border-radius:2rem; display:block;" alt="${title}" />`;
+      modal.classList.add('is-open');
+    }
+
+    function closeMediaModal() {
+      const modal = document.getElementById('mediaModal');
+      const modalBody = document.getElementById('modalBody');
+      modal.classList.remove('is-open');
+      setTimeout(() => { modalBody.innerHTML = ''; }, 250);
+    }
+
+    // 6. Contact Guide Toast
+    function openContactGuide() {
+      const toast = document.getElementById('copyToast');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('https://www.instagram.com/musaheetoday/');
+      }
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+  </script>
+</body>
+</html>
+
